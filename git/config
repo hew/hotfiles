@@ -1,0 +1,71 @@
+[filter "media"]
+	required = true
+	clean = git media clean %f
+	smudge = git media smudge %f
+[user]
+	name = Matthew Jones
+	email = matt@klue.com
+[filter "hawser"]
+	clean = git hawser clean %f
+	smudge = git hawser smudge %f
+	required = true
+[filter "lfs"]
+	clean = git lfs clean %f
+	smudge = git lfs smudge %f
+	required = true
+[diff]
+	tool = vimdiff
+[github]
+	user = hew
+[alias]
+  ec = config --global -e
+  co = checkout
+  s = status
+  cm = commit -m
+  au = add -u
+  al = add -A
+  l = log --graph --abbrev-commit --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)%ae%Creset'
+  lo = log --graph --oneline --decorate --all
+  logg = log --oneline --decorate --all --graph
+  quick = !git add -u && git commit -m "Updates."
+  rod = !sh -c 'git fetch && git rebase origin/dev'
+  diff-origin = diff -U0
+  diff-prev = diff HEAD^1
+  clean = clean -i
+  amend = commit -a --amend -C HEAD
+  undo = reset --soft HEAD^            # Keep any unstaged files. Blow away staged area.
+  easy-revert = reset HEAD~1 --mixed   # Revert back to previous commit
+  fuck = reset --hard HEAD             # Stay at current commit. Blow away working directory.
+  history = log --oneline
+  latest = for-each-ref --sort=-committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'
+  black-hole = !git add -A && git commit -qm 'QUARANTINED' && git reset HEAD~1 --hard
+  # Deletes any local branches that have already been merged.
+  delete-local-merged = branch -d `git branch --merged | grep -v '^*' | grep -v 'master' | tr -d '\n'`
+  # This saves everything to a new branch. Enter the branch name after 'save'.
+  save = !sh -c 'export PREV=$(git symbolic-ref HEAD|cut -d/ -f3-) && git checkout -b "$1" && git commit -am "$1" && git checkout "$PREV"' -
+  # Enter the name of the author, and then add their email.
+  credit = "!f() { git commit --amend --author "$1 <$2>" -C HEAD ; }; f"
+  # Just give the remote a name.
+  set-remote = "!f() { git remote add origin git@github.com:hew/"$1".git ; }; f"
+  set-bb = "!f() { git remote add bb https://bitbucket.com/hew/"$1" ; }; f"
+  # Delete Remote Branch
+  delete-remote-branch = "!f() { git push origin --delete "$1" ; }; f"
+  # See latest commits on all branches
+  latest-commits = for-each-ref --sort=-committerdate --format='%(refname:short) %(committerdate:short)'
+	d = difftool
+
+[push]
+	default = current
+[core]
+	editor = vim
+	excludesfile = ~/.config/git/ignore
+	configfile = ~/.config/git/config
+	pager = diff-so-fancy | less --tabs=4 -RFX
+[credential]
+	helper = osxkeychain
+[ghi]
+	token = !security find-internet-password -a hew -s github.com -l 'ghi token' -w
+[difftool]
+	prompt = false
+[mergetool]
+	path = vi
