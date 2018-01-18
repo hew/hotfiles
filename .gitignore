@@ -1,0 +1,17 @@
+configstore
+fisherman
+fish
+!fish/aliases.fish
+!fish/config.fish
+!fish/functions/b.rb
+!fish/functions/e.fish
+!fish/functions/z.fish
+vim/.netrwhist
+vim/plugged/**
+vim/vimwiki/WORK
+bin/ngrok
+.DS_Store
+alacritty
+yarn
+heroku
+.netrwhist
