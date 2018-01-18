@@ -28,6 +28,8 @@ alias 'c-x' 'chmod -x'
 alias gs='git status'
 alias gl='git log'
 alias gf='git fetch'
+alias gp='git pull'
+alias gc='git commit -m'
 alias get-dev='git co dev ; git pull ; git co -'
 
 

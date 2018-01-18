@@ -7,10 +7,12 @@ rbenv rehash >/dev/null ^&1
 
 # Set Path to My Custom Executables
 set -gx PATH $PATH ~/.config/bin
+set -gx PYENV_ROOT ~/.pyenv
 
 # Path Helpers
 set -gx KLUE $KLUE ~/kluein/klue
 set -gx FIG $FIG ~/.config
+set -gx EC $EC ~/.config/nvim/init.vim
 
 set -Ux TERM 'xterm-256color-italic'
 

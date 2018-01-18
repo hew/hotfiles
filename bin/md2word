@@ -1,0 +1,2 @@
+#!/bin/bash
+pandoc -f markdown_github-hard_line_breaks -t docx -o "${1%.*}.docx" "$1"

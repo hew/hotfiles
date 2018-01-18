@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# usage: replace [search] [replace]
+# caveats: WILL CHOKE if either arguments contain a forward slash
+# notes: will back up changed files to *.bak files
+
+ag -l $1 | xargs perl -pi.bak -e "s/$1/$2/g"
+
+# or if you prefer sed's regex syntax:
+
+# ag -l $1 | xargs sed -ri.bak -e "s/$1/$2/g"

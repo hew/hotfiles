@@ -8,7 +8,6 @@
 " cmap, cnoremap, cunmap          Command-line mode
 " omap, onoremap, ounmap          Operator pending mode
 
-
 " General:
 "------------------------------------------------------------------- "
 set nocompatible
@@ -16,7 +15,7 @@ filetype indent plugin on
 " set winwidth=1
 set encoding=utf8
 set number
-set background=dark
+" set background=dark
 set wrap
 set hidden
 set list
@@ -48,7 +47,7 @@ set matchtime=2                         " Jump to matching parents for 30ms
 set wrapscan                            " Searches wrap around end of file
 set autoread                            " reload unedited files that changed
 set display+=lastline                   " show long last line in window
-set timeoutlen=1000                     " eliminate any lag ESC lag
+set timeoutlen=300                      " eliminate any lag ESC lag
 set shell=/usr/local/bin/fish           " Use the fish shell
 set ttimeoutlen=0
 set listchars=tab:▸–,trail:·,extends:❯,precedes:❮,nbsp:⌴
@@ -58,6 +57,10 @@ set listchars=tab:▸–,trail:·,extends:❯,precedes:❮,nbsp:⌴
 "------------------------------------------------------------------- "
 call plug#begin('~/.oni/plugins')
 
+if has("gui_running")
+else
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+endif
 Plug 'w0rp/ale'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
@@ -65,9 +68,17 @@ Plug 'mhartington/oceanic-next'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'prettier/vim-prettier'
-Plug 'dkprice/vim-easygrep'
+Plug 'rking/ag.vim'
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
+Plug 'chemzqm/vim-jsx-improve'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'tpope/vim-eunuch'
+Plug 'junegunn/vim-peekaboo'
+Plug 'mattn/emmet-vim'
+" Plug 'mxw/vim-jsx'
+
 
 " Initialize plugin system
 call plug#end()
@@ -76,9 +87,10 @@ call plug#end()
 " Preferences:
 "------------------------------------------------------------------- "
 noremap <space> :
+autocmd BufWritePost init.vim source %
 
 
-" Meta Key Mappings:
+" Meta Keys:
 "------------------------------------------------------------------- "
 nnoremap <silent> <M-s> :w<CR>
 nnoremap <silent> <M-w> :bd<CR>
@@ -86,13 +98,39 @@ nnoremap <silent> <M-down> G<CR>
 nnoremap <silent> <M-up> gg<CR>
 nnoremap <silent> <M-\> :NERDTreeToggle<CR>
 nnoremap <silent> <M-F> :NERDTreeFind<CR>
-nnoremap <silent> <M-o> :e ~/.oni/config.js<CR>
-nnoremap <silent> <M-i> :e ~/.config/nvim/init.vim<CR>
-nnoremap <silent> <M-e> :cd ~/kluein/klue<CR>
 vmap <M-/> <Plug>NERDCommenterToggle
 nmap <M-/> <Plug>NERDCommenterToggle
 nmap <M-H> <c-w><c-h>
 nmap <M-L> <c-w><c-l>
+
+
+" Most Leader Keys:
+" ------------------------------------------------------------------- " 
+noremap <leader>b :Buffers<CR>
+noremap <leader>p :GFiles<CR>
+noremap <leader>g :GFiles?<CR>
+noremap <leader>sn :Snippets<CR>
+noremap <leader><leader>f :Files<CR>
+noremap <leader>y "*y
+" noremap <Leader>x <Plug>(PrettierAsync)
+noremap <leader><leader>p :set paste<CR>:put  *<CR>:set nopaste<CR>
+nnoremap <leader>f :NERDTreeToggle<CR>
+nnoremap <leader>d :ALEFix<CR>
+nnoremap <leader>x :Ex<CR>
+
+
+" Workspaces:
+" ------------------------------------------------------------------- " 
+" Config Workspaces 
+nnoremap <silent> <M-o>    :e ~/.oni/config.js<CR>
+nnoremap <leader><leader>o :e ~/.oni/config.js<CR>
+nnoremap <silent> <M-i>    :e ~/.config/nvim/init.vim<CR>
+nnoremap <leader><leader>i :e ~/.config/nvim/init.vim<CR>
+
+" Work... Workspaces
+nnoremap <silent> <M-e>    :cd ~/kluein/klue<CR>
+nnoremap <leader><leader>e :cd ~/kluein/klue<CR>
+nnoremap <leader>q         :e  ~/kluein/klue/log/development.log
 
 
 
@@ -102,17 +140,16 @@ nmap <M-L> <c-w><c-l>
 nmap <s-Tab> <c-w><c-w>
 
 " Tabs
-" imap <c-Tab> <Esc>:tabnext<Cr>
-" imap <c-S-Tab> <Esc>:tabprev<Cr>
-" nmap <c-Tab> :tabnext<Cr>
-" nmap <c-S-Tab> :tabprev<Cr>
+imap <c-Tab> <Esc>:tabnext<Cr>
+imap <c-S-Tab> <Esc>:tabprev<Cr>
+nmap <c-Tab> :tabnext<Cr>
+nmap <c-S-Tab> :tabprev<Cr>
 
 " Buffers
 nnoremap <silent> [b :bprevious<CR>
 nnoremap <silent> ]b :bnext<CR>
 nnoremap <silent> [B :bfirst<CR>
 nnoremap <silent> ]B :blast<CR>
-nnoremap <leader>b :buffers<CR>:buffer<Space>
 
 " Insert mode 
 map! <c-e> <End>
@@ -140,12 +177,14 @@ syntax on
 colorscheme OceanicNext
 let &t_ZH="\e[3m"
 let &t_ZR="\e[23m"
+hi ctermbg gui=none
 hi htmlArg gui=italic
 hi Comment gui=italic
 hi Type    gui=italic
 hi htmlArg cterm=italic
 hi Comment cterm=italic
 hi Type    cterm=italic
+hi ctermbg cterm=none
 let g:oceanic_next_terminal_bold = 1
 let g:oceanic_next_terminal_italic = 1
 
@@ -172,9 +211,9 @@ vmap ' S'
 vmap ` S`
 
 " --- UltiSnips ---
-" let g:UltiSnipsExpandTrigger="<tab>"
-" let g:UltiSnipsJumpForwardTrigger="<tab>"
-" let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 " --- Prettier ---
 let g:prettier#exec_cmd_async = 1
@@ -187,11 +226,13 @@ let g:ale_linters = {
       \ 'ocaml': ['merlin'], 
       \ 'reason': ['merlin'] 
       \}
-let g:ale_fixers = { 'javascript': ['prettier-eslint'] }
+let g:ale_fixers = { 
+      \ 'javascript': ['eslint']
+      \}
 let g:ale_lint_on_save = 1
-let g:ale_fix_on_save = 1
-let g:ale_lint_on_text_changed = 1
-let g:ale_javascript_prettier_eslint_use_global = 1
+" let g:ale_fix_on_save = 1
+" let g:ale_lint_on_text_changed = 1
+" let g:ale_javascript_prettier_eslint_use_global = 1
 " let g:ale_javascript_prettier_use_local_config = 1
 " let g:ale_javascript_prettier_eslint_options = '--eslint-config-path \"~/kluein/klue/.eslintrc.json"'
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
@@ -202,22 +243,21 @@ let g:EasyGrepFilesToExclude='android,ios,node_modules,coverage,*.lock,*.log,__s
 let g:EasyGrepRecursive=1
 let g:EasyGrepCommand=1   "important, otherwise, it won't work
 
-" --- Rg w/ FZF ---
-command! -bang -nargs=* Rg
-  \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
-  \   <bang>0 ? fzf#vim#with_preview('up:60%')
-  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
-  \   <bang>0)
+" --- FZF ---
+imap <c-x><c-f> <plug>(fzf-complete-file-ag)
+au BufEnter * if &buftype == 'terminal' | :startinsert | endif
+au FileType fzf tnoremap <buffer> <Esc> <Esc>
 
-" --- FZF --- 
-function! s:fzf_statusline()
-  highlight fzf1 ctermfg=161 ctermbg=251
-  highlight fzf2 ctermfg=23 ctermbg=251
-  highlight fzf3 ctermfg=237 ctermbg=251
-  setlocal statusline=%#fzf1#\ >\ %#fzf2#fz%#fzf3#f
-endfunction
-autocmd! User FzfStatusLine call <SID>fzf_statusline()
+" --- Deoplete ---
+let g:deoplete#enable_at_startup = 1
+
+" --- Emmet ---
+let g:user_emmet_settings = {
+      \  'javascript' : {
+      \      'extends' : 'jsx',
+      \  },
+      \}
+
 
 " Misc:
 " ------------------------------------------------------------------- "
@@ -232,19 +272,6 @@ nnoremap <expr> <D-K> &diff ? '[c' : '<C-W>k'
 tnoremap <Esc> <C-\><C-n>
 
 
-
-" Leader Keys:
-" ------------------------------------------------------------------- " 
-noremap <leader>b :Buffers<CR>
-noremap <leader>f :Files<CR>
-noremap <leader>p :GFiles<CR>
-noremap <leader>g :GFiles?<CR>
-noremap <leader>y "*y
-noremap <Leader>pr <Plug>(PrettierAsync)
-noremap <leader><leader>p :set paste<CR>:put  *<CR>:set nopaste<CR>
-
-
-
 " F Keys:
 " ------------------------------------------------------------------- " 
 " F7  - // DOESN'T WORK \\
@@ -255,7 +282,7 @@ nnoremap <F6> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 
 " Prettier / Prettier & Eslint
 nnoremap <F7> :PrettierAsync<CR>
-nnoremap <F8> :silent! npx prettier-eslint --write %<CR>
+nnoremap <F8> :!npx eslint --fix %<CR>
 
 " Code folding
 inoremap <F9> <C-O>za
