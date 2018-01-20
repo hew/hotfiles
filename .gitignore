@@ -14,4 +14,4 @@ bin/ngrok
 alacritty
 yarn
 heroku
-.netrwhist
+nvim/.netrwhist
