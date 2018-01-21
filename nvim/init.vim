@@ -10,16 +10,26 @@ source ~/.config/nvim/modules/workspaces.vim
 " ------------------------------------------------------------------- " 
 " Leader Keys:
 " ------------------------------------------------------------------- " 
+
+" FZF
 noremap <leader>b :Buffers<CR>
 noremap <leader>p :GFiles<CR>
 noremap <leader>g :GFiles?<CR>
 noremap <leader>sn :Snippets<CR>
 noremap <leader><leader>f :Files<CR>
-noremap <leader>y "*y
-noremap <Leader>z <Plug>(PrettierAsync)
-noremap <leader><leader>p :set paste<CR>:put  *<CR>:set nopaste<CR>
-nnoremap <leader>f :NERDTreeToggle<CR>
+
+" Javascript Workflow
+noremap <Leader>z :PrettierAsync
 nnoremap <leader>d :ALEFix<CR>
-nnoremap <leader>x :Ex<CR>
+
+" Search
 nnoremap <leader><leader>a :AgFromSearch!<CR>
 nnoremap <leader>a :Ag!
+
+" NERDTree
+nnoremap <leader>f :NERDTreeToggle<CR>
+nnoremap <leader>x :Ex<CR>
+
+" Copy/Paste
+noremap <leader>y "*y
+noremap <leader><leader>p :set paste<CR>:put  *<CR>:set nopaste<CR>
