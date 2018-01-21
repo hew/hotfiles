@@ -1,9 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =7
-let g:netrw_dirhist_1='/Users/hew/kluein/klue/app/views/sfdc'
-let g:netrw_dirhist_2='/Users/hew/kluein/klue/app/views/sfdc/salesforce'
-let g:netrw_dirhist_3='/Users/hew/Sites'
-let g:netrw_dirhist_4='/Users/hew/Sites/reason-period-app'
-let g:netrw_dirhist_5='/Users/hew/Sites/reason-period-app/re'
-let g:netrw_dirhist_6='/Users/hew/Sites/reason-period-app'
-let g:netrw_dirhist_7='/Users/hew/kluein/klue/app/assets/javascripts/components/battlecard_onboarding'

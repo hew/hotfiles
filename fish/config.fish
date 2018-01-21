@@ -14,7 +14,7 @@ set -gx KLUE $KLUE ~/kluein/klue
 set -gx FIG $FIG ~/.config
 set -gx EC $EC ~/.config/nvim/init.vim
 
-set -Ux TERM 'xterm-256color-italic'
+# set -Ux TERM 'xterm-256color-italic'
 
 set -g fish_user_paths "/usr/local/opt/imagemagick@6/bin" $fish_user_paths
 set -g fish_user_paths "/usr/local/bin" $fish_user_paths
