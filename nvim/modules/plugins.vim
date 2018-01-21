@@ -28,7 +28,7 @@ call plug#begin('~/.oni/plugins')
     Plug 'Shougo/deoplete.nvim',  { 'do': ':UpdateRemotePlugins' }
   endif
 
-  " Possible non-performant
+  " Possibly non-performant
   " Plug 'mattn/emmet-vim', { 'for': 'javascript' }
   " Plug 'junegunn/vim-github-dashboard', { 'on': 'GHActivity' }
   " Plug 'mxw/vim-jsx'
@@ -73,7 +73,7 @@ let g:prettier#exec_cmd_async = 1
 
 " --- Prettier ---
 autocmd FileType reason map <buffer> <D-M> :ReasonPrettyPrint<Cr>
-
+source ~/.config/nvim/modules/prettier.vim
 
 " --- Language Server ---
 let g:LanguageClient_serverCommands = {

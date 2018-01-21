@@ -19,7 +19,7 @@ noremap <leader>sn :Snippets<CR>
 noremap <leader><leader>f :Files<CR>
 
 " Javascript Workflow
-noremap <Leader>z :PrettierAsync
+noremap <Leader>z :PrettierAsync<CR>
 nnoremap <leader>d :ALEFix<CR>
 
 " Search
