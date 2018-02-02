@@ -2,6 +2,9 @@
 " Prettier efault: 80
 let g:prettier#config#print_width = 80
 
+" Force Async
+let g:prettier#exec_cmd_async = 1
+
 " number of spaces per indentation level
 " Prettier default: 2
 let g:prettier#config#tab_width = 2
@@ -32,7 +35,7 @@ let g:prettier#config#arrow_parens = 'always'
 
 " none|es5|all
 " Prettier default: none
-let g:prettier#config#trailing_comma = 'all'
+let g:prettier#config#trailing_comma = 'none'
 
 " flow|babylon|typescript|css|less|scss|json|graphql|markdown
 " Prettier default: babylon

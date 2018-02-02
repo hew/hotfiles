@@ -14,6 +14,7 @@ call plug#begin('~/.oni/plugins')
   Plug 'junegunn/vim-peekaboo'
   Plug 'scrooloose/nerdcommenter'
   Plug 'scrooloose/nerdtree',            { 'on':  'NERDTreeToggle'       }
+  Plug 'mattn/emmet-vim',                { 'for': 'javascript' }
   Plug 'w0rp/ale',                       { 'for': 'javascript'           }
   Plug 'prettier/vim-prettier',          { 'for': 'javascript'           }
   Plug 'chemzqm/vim-jsx-improve',        { 'for': 'javascript'           }
@@ -29,7 +30,6 @@ call plug#begin('~/.oni/plugins')
   endif
 
   " Possibly non-performant
-  " Plug 'mattn/emmet-vim', { 'for': 'javascript' }
   " Plug 'junegunn/vim-github-dashboard', { 'on': 'GHActivity' }
   " Plug 'mxw/vim-jsx'
 
@@ -68,12 +68,11 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 
 " --- Prettier ---
-let g:prettier#exec_cmd_async = 1
+source ~/.config/nvim/modules/prettier.vim
 
 
 " --- Prettier ---
 autocmd FileType reason map <buffer> <D-M> :ReasonPrettyPrint<Cr>
-source ~/.config/nvim/modules/prettier.vim
 
 " --- Language Server ---
 let g:LanguageClient_serverCommands = {
@@ -97,13 +96,6 @@ let g:ale_linters = {
       \ 'reason': ['merlin'] 
       \}
 
-
-" --- Easy Grep ---
-let g:EasyGrepFilesToExclude='android,ios,node_modules,coverage,*.lock,*.log,__snapshots__'
-let g:EasyGrepRecursive=1
-let g:EasyGrepCommand=1   "important, otherwise, it won't work
-
-
 " --- FZF ---
 imap <c-x><c-f> <plug>(fzf-complete-file-ag)
 au FileType fzf tnoremap <buffer> <Esc> <Esc>
@@ -111,6 +103,7 @@ au FileType fzf tnoremap <buffer> <Esc> <Esc>
 
 " --- Deoplete ---
 let g:deoplete#enable_at_startup = 1
+let g:deoplete#file#enable_buffer_path = 1
 
 
 " --- Emmet ---

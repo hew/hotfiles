@@ -28,6 +28,7 @@
   lo = log --graph --oneline --decorate --all
   logg = log --oneline --decorate --all --graph
   quick = !git add -u && git commit -m "Updates."
+  pull = pull --rebase --prune
   rod = !sh -c 'git fetch && git rebase origin/dev'
   diff-origin = diff -U0
   diff-prev = diff HEAD^1
