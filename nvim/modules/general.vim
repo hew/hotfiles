@@ -38,3 +38,4 @@ set shell=/usr/local/bin/fish           " Use the fish shell
 set ttimeoutlen=0
 set listchars=tab:▸–,trail:·,extends:❯,precedes:❮,nbsp:⌴
 
+let g:python3_host_prog = '/Users/hew/.pyenv/shims/python'

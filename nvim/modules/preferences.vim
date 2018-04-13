@@ -8,6 +8,12 @@ nnoremap <PageUp> <C-u>
 nnoremap <PageDown> <C-d>
 let loaded_matchparen = 1
 
+" Turn off arrow keys...
+noremap <Up> <NOP>
+noremap <Down> <NOP>
+noremap <Left> <NOP>
+noremap <Right> <NOP>
+
 " Auto-source init.vim (seems to have a memory leak or something)
 " au BufWritePost init.vim source %
 

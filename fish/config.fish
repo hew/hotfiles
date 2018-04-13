@@ -1,6 +1,9 @@
 # Load Aliases and Shiz
 source ~/.config/fish/aliases.fish
 
+# Load Pyenv
+status --is-interactive; and . (pyenv init - | psub)
+
 # Load Rbenv
 set PATH $HOME/.rbenv/shims $PATH
 rbenv rehash >/dev/null ^&1

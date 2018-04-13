@@ -1,0 +1,34 @@
+# Repeat prefix for last window
+bind-key C-b last-window
+
+# Keys
+bind k confirm kill-window
+bind K confirm kill-server
+bind % split-window -h
+bind : split-window -v
+bind < resize-pane -L 1
+bind > resize-pane -R 1
+bind - resize-pane -D 1
+bind + resize-pane -U 1
+bind . command-prompt
+bind l last-window
+bind space command-prompt -p index "select-window"
+bind r source-file ~/.tmux.conf
+
+# Use Vim!
+setw -g mode-keys vi
+
+# No Lag on Inputs
+set -s escape-time 0
+
+# Set the default terminal mode to 256color mode (italics)
+set -g default-terminal "xterm-256color-italic"
+set -as terminal-overrides ',xterm*:sitm=\E[3m'
+
+# clear both screen and history
+# bind -n C-l send-keys C-l \; run 'sleep 0.05 && tmux clear-history'
+
+# activity
+set -g monitor-activity on
+set -g visual-activity off
+

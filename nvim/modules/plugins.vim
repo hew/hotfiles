@@ -13,15 +13,17 @@ call plug#begin('~/.oni/plugins')
   Plug 'tpope/vim-eunuch'
   Plug 'junegunn/vim-peekaboo'
   Plug 'scrooloose/nerdcommenter'
+  Plug 'Shougo/echodoc.vim'
+  Plug 'Shougo/neoinclude.vim'
   Plug 'scrooloose/nerdtree',            { 'on':  'NERDTreeToggle'       }
   Plug 'mattn/emmet-vim',                { 'for': 'javascript' }
-  Plug 'w0rp/ale',                       { 'for': 'javascript'           }
+  " Plug 'w0rp/ale',                       { 'for': 'javascript'           }
   Plug 'prettier/vim-prettier',          { 'for': 'javascript'           }
   Plug 'chemzqm/vim-jsx-improve',        { 'for': 'javascript'           }
   Plug 'SirVer/ultisnips',               { 'for': 'javascript'           }
   Plug 'honza/vim-snippets',             { 'for': 'javascript'           }
   Plug 'reasonml-editor/vim-reason',     { 'for': 'reason'               }
-  Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
+  " Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
 
   " No need for completion when running inside Oni
   if has("gui_running")
@@ -104,6 +106,7 @@ au FileType fzf tnoremap <buffer> <Esc> <Esc>
 " --- Deoplete ---
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#file#enable_buffer_path = 1
+" let g:deoplete#complete_method = 'omnifunc'
 
 
 " --- Emmet ---

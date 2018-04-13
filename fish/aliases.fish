@@ -12,6 +12,7 @@ alias ep 'e ~/.config/nvim/modules/plugins.vim'
 alias tc 'e ~/.config/tmux/tmux.conf'
 alias eh 'e ~/.hyper.js'
 alias ec 'e $HOME/Library/Application\ Support/Code/User/settings.json'
+alias slack '~/go/bin/slack-term'
 alias wik 'e ~/vimwiki/index.wiki'
 
 ## ----- CLI ----- 

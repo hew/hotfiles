@@ -16,10 +16,11 @@ noremap <leader>b :Buffers<CR>
 noremap <leader>p :GFiles<CR>
 noremap <leader>g :GFiles?<CR>
 noremap <leader>sn :Snippets<CR>
-noremap <leader><leader>f :Files<CR>
+noremap <leader>f :Files<CR>
 
 " Javascript Workflow
 noremap <Leader>z :PrettierAsync<CR>
+noremap <Leader>v :ReasonPrettyPrint<CR>
 nnoremap <leader>d :ALEFix<CR>
 
 " Search
@@ -27,7 +28,7 @@ nnoremap <leader><leader>a :AgFromSearch!<CR>
 nnoremap <leader>a :Ag!
 
 " NERDTree
-nnoremap <leader>f :NERDTreeToggle<CR>
+nnoremap <leader><leader>f :NERDTreeToggle<CR>
 nnoremap <leader>x :Ex<CR>
 
 " Copy/Paste

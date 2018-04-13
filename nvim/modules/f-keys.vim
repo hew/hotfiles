@@ -17,3 +17,5 @@ vmap <F10> :sort ui<Cr>
 " Resize Window
 imap <F11> <Esc>:vertical resize -10<CR>
 nmap <F11> :vertical resize -10<CR>
+
+noremap <F12> :PrettierAsync<CR>
