@@ -14,9 +14,12 @@ alias eh 'e ~/.hyper.js'
 alias ec 'e $HOME/Library/Application\ Support/Code/User/settings.json'
 alias slack '~/go/bin/slack-term'
 alias wik 'e ~/vimwiki/index.wiki'
+alias work 'e ~/Sites/feathers-practice'
+alias work2 'e ~/Sites/wy'
 
 ## ----- CLI ----- 
 alias gat 'gatsby' 
+alias t '/Users/hew/go/bin/td'
 
 ## ----- General Unix ----- 
 alias l='ls -ld .?*'

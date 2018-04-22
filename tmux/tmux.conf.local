@@ -4,16 +4,18 @@ bind-key C-b last-window
 # Keys
 bind k confirm kill-window
 bind K confirm kill-server
-bind % split-window -h
-bind : split-window -v
-bind < resize-pane -L 1
-bind > resize-pane -R 1
-bind - resize-pane -D 1
-bind + resize-pane -U 1
+bind : split-window -c "#{pane_current_path}"
+bind % split-window -h -c "#{pane_current_path}"
+bind c new-window -c "#{pane_current_path}"
+bind < resize-pane -L 10
+bind > resize-pane -R 10
+bind - resize-pane -D 10
+bind + resize-pane -U 10
 bind . command-prompt
 bind l last-window
 bind space command-prompt -p index "select-window"
 bind r source-file ~/.tmux.conf
+bind-key -n F1 next-window
 
 # Use Vim!
 setw -g mode-keys vi

@@ -2,28 +2,44 @@
 " Plugins:
 "------------------------------------------------------------------- "
 
-call plug#begin('~/.oni/plugins')
+call plug#begin('~/.config/nvim/plugged')
 
-  Plug 'mhartington/oceanic-next'
+  " Language & Syntax
+  Plug 'isRuslan/vim-es6'
+  Plug 'reasonml-editor/vim-reason',     { 'for': 'reason'               }
+  Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
+  Plug 'prettier/vim-prettier',          { 'for': 'javascript'           }
+  Plug 'mattn/emmet-vim',                { 'for': 'javascript'           }
+  " Plug 'chemzqm/vim-jsx-improve',        { 'for': 'javascript'           }
+  " Plug 'w0rp/ale',                       { 'for': 'javascript'           }
+
+  " Nice-to-haves
+  Plug 'junegunn/vim-peekaboo'
+
+  " Pope Essentials
   Plug 'tpope/vim-fugitive'
   Plug 'tpope/vim-surround'
-  Plug 'brookhong/ag.vim'
-  Plug '/usr/local/opt/fzf'
-  Plug 'junegunn/fzf.vim'
+  Plug 'tpope/vim-commentary'
   Plug 'tpope/vim-eunuch'
-  Plug 'junegunn/vim-peekaboo'
-  Plug 'scrooloose/nerdcommenter'
-  Plug 'Shougo/echodoc.vim'
+
+  " Themes
+  Plug 'mhartington/oceanic-next'
+  Plug 'tpope/vim-vividchalk'
+  Plug 'NLKNguyen/papercolor-theme'
+  Plug 'jguddas/onecustom.vim'
+  Plug 'h3xx/vim-late_evening'
+  Plug 'itchyny/landscape.vim'
+  
+  " Search / Fuzzy / Files
+  Plug 'brookhong/ag.vim'
+  Plug 'junegunn/fzf.vim'
+  Plug '/usr/local/opt/fzf'
   Plug 'Shougo/neoinclude.vim'
   Plug 'scrooloose/nerdtree',            { 'on':  'NERDTreeToggle'       }
-  Plug 'mattn/emmet-vim',                { 'for': 'javascript' }
-  " Plug 'w0rp/ale',                       { 'for': 'javascript'           }
-  Plug 'prettier/vim-prettier',          { 'for': 'javascript'           }
-  Plug 'chemzqm/vim-jsx-improve',        { 'for': 'javascript'           }
+
+  " Snippets
   Plug 'SirVer/ultisnips',               { 'for': 'javascript'           }
   Plug 'honza/vim-snippets',             { 'for': 'javascript'           }
-  Plug 'reasonml-editor/vim-reason',     { 'for': 'reason'               }
-  " Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
 
   " No need for completion when running inside Oni
   if has("gui_running")
@@ -42,10 +58,15 @@ call plug#end()
 "------------------------------------------------------------------- "
 
 " --- NERDTree ---
-let g:NERDCompactSexyComs = 0
-let g:NERDSpaceDelims = 1
-let g:NERDDefaultAlign = 'left'
-let g:NERDCustomDelimiters = { 'reason': { 'left': '/*','right': '*/', 'nested': 1 } }
+" let g:NERDCompactSexyComs = 1
+" let g:NERDSpaceDelims = 1
+" let g:NERDDefaultAlign = 'left'
+" let g:NERDCustomDelimiters = { 'reason': { 'left': '/*','right': '*/', 'nested': 1 } }
+" nmap zz <plug>NERDCommenterComment
+
+
+" --- Commentary ---
+nnoremap zz :Commentary<CR>
 
 
 " --- Netrw ---
@@ -82,9 +103,9 @@ let g:LanguageClient_serverCommands = {
     \ 'ocaml': ['ocaml-language-server', '--stdio'],
     \ 'javascript': ['typescript-language-server', '--stdio'],
     \ }
-nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
-nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 
 " --- Ale ---
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)

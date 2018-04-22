@@ -6,7 +6,8 @@ if (has("termguicolors"))
   set termguicolors
 endif
 syntax on
-colorscheme OceanicNext
+colorscheme late_evening
+
 let &t_ZH="\e[3m"
 let &t_ZR="\e[23m"
 hi ctermbg gui=none
