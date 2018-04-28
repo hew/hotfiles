@@ -6,6 +6,7 @@ fish
 !fish/functions/b.rb
 !fish/functions/e.fish
 !fish/functions/z.fish
+fish/sensitive.fish
 vim/.netrwhist
 vim/plugged/**
 nvim/.netrwhist
