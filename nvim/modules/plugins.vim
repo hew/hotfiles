@@ -4,15 +4,6 @@
 
 call plug#begin('~/.config/nvim/plugged')
 
-  " Language & Syntax
-  Plug 'isRuslan/vim-es6'
-  Plug 'reasonml-editor/vim-reason',     { 'for': 'reason'               }
-  Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
-  Plug 'prettier/vim-prettier',          { 'for': 'javascript'           }
-  Plug 'mattn/emmet-vim',                { 'for': 'javascript'           }
-  " Plug 'chemzqm/vim-jsx-improve',        { 'for': 'javascript'           }
-  " Plug 'w0rp/ale',                       { 'for': 'javascript'           }
-
   " Nice-to-haves
   Plug 'junegunn/vim-peekaboo'
 
@@ -35,21 +26,25 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'junegunn/fzf.vim'
   Plug '/usr/local/opt/fzf'
   Plug 'Shougo/neoinclude.vim'
-  Plug 'scrooloose/nerdtree',            { 'on':  'NERDTreeToggle'       }
+  Plug 'scrooloose/nerdtree',             { 'on':  'NERDTreeToggle'       }
 
   " Snippets
-  Plug 'SirVer/ultisnips',               { 'for': 'javascript'           }
-  Plug 'honza/vim-snippets',             { 'for': 'javascript'           }
+  Plug 'SirVer/ultisnips',                { 'for': 'javascript'           }
+  Plug 'honza/vim-snippets',              { 'for': 'javascript'           }
+
+  " Language & Syntax
+  Plug 'isRuslan/vim-es6'
+  Plug 'reasonml-editor/vim-reason',      { 'for': 'reason'               }
+  Plug 'autozimu/LanguageClient-neovim',  { 'branch': 'next', 'do': 'bash install.sh' }
+  Plug 'prettier/vim-prettier',           { 'for': 'javascript'           }
+  Plug 'mattn/emmet-vim',                 { 'for': 'javascript'           }
+  " Plug 'w0rp/ale',                        { 'for': 'javascript'           }
 
   " No need for completion when running inside Oni
   if has("gui_running")
   else
-    Plug 'Shougo/deoplete.nvim',  { 'do': ':UpdateRemotePlugins' }
+    Plug 'Shougo/deoplete.nvim',          { 'do': ':UpdateRemotePlugins' }
   endif
-
-  " Possibly non-performant
-  " Plug 'junegunn/vim-github-dashboard', { 'on': 'GHActivity' }
-  " Plug 'mxw/vim-jsx'
 
 call plug#end()
 

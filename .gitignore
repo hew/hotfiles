@@ -8,7 +8,8 @@ fish
 !fish/functions/z.fish
 vim/.netrwhist
 vim/plugged/**
-vim/vimwiki/WORK
+nvim/.netrwhist
+nvim/plugged/**
 bin/ngrok
 .DS_Store
 alacritty

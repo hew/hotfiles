@@ -1,25 +1,27 @@
-# ----- Editing ----- 
-
-# Editor
+# ----- Editor ----- 
 alias e 'nvim'
 
-# Quick edits
+# ----- XDG_home ----- 
 alias ea 'e ~/.config/fish/aliases.fish'
 alias ef 'e ~/.config/fish/config.fish'
 alias eg 'e ~/.config/git/config'
 alias ev 'e ~/.config/nvim/init.vim'
 alias ep 'e ~/.config/nvim/modules/plugins.vim'
 alias tc 'e ~/.config/tmux/tmux.conf'
+alias fig 'e ~/.config'
+
+# ----- Other Config ----- 
 alias eh 'e ~/.hyper.js'
 alias ec 'e $HOME/Library/Application\ Support/Code/User/settings.json'
-alias slack '~/go/bin/slack-term'
-alias wik 'e ~/vimwiki/index.wiki'
-alias work 'e ~/Sites/feathers-practice'
-alias work2 'e ~/Sites/wy'
 
-## ----- CLI ----- 
+# ----- Program Shortcuts ----- 
+alias slack '~/go/bin/slack-term'
 alias gat 'gatsby' 
 alias t '/Users/hew/go/bin/td'
+
+# ----- Sites Shortcuts ----- 
+alias work 'e ~/Sites/feathers-practice'
+alias work2 'e ~/Sites/wy'
 
 ## ----- General Unix ----- 
 alias l='ls -ld .?*'
@@ -27,7 +29,6 @@ alias ll='ls -1d'
 alias md 'mkdir -p'
 alias cx 'chmod +x'
 alias 'c-x' 'chmod -x'
-
 
 ## ----- Git ----- 
 alias gs='git status'
@@ -38,11 +39,16 @@ alias gc='git commit -m'
 alias get-dev='git co dev ; git pull ; git co -'
 
 
+## ----- Path Stuff ----- 
+
 # Pretty print path
 alias path="echo $PATH ^| tr -s ':' '\n'"
 
 # Copy path
 alias pathc='pwd ^| pbcopy'
+
+
+## ----- Misc ----- 
 
 # Pretty Cat
 alias ccat='pygmentize -g'
