@@ -18,6 +18,10 @@ hi htmlArg cterm=italic
 hi Comment cterm=italic
 hi Type    cterm=italic
 hi ctermbg cterm=none
+
+" Temp hack (https://github.com/zeit/hyper/issues/2592)
+hi Normal ctermbg=none
+
 let g:oceanic_next_terminal_bold = 1
 let g:oceanic_next_terminal_italic = 1
 
