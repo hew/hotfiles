@@ -1,6 +1,4 @@
-#
-# Imports
-#
+# Imports ----------------------------
 snippet ir "import React from 'react';"
 import React from 'react';
 endsnippet
@@ -10,9 +8,7 @@ import ReactDOM from 'react-dom';
 endsnippet
 
 
-#
-# Lifecycles
-#
+# Lifecycles ----------------------------
 snippet cdm "componentDidMount"
 componentDidMount() {
   ${1}
@@ -56,9 +52,7 @@ shouldComponentUpdate(nextProps, nextState) {
 endsnippet
 
 
-#
-# Class Properties
-#
+# Class Properties ----------------------------
 snippet ctor "constructor()"
 constructor() {
   super();
@@ -84,9 +78,8 @@ static propTypes = {
 }
 endsnippet
 
-#
-# Class Creation
-#
+
+# Class Creation ----------------------------
 snippet rcc "class x extends Component"
 class ${1:ClassName} extends Component {
   render() {
@@ -106,9 +99,7 @@ render() {
 endsnippet
 
 
-#
-# SetState
-#
+# SetState ----------------------------
 snippet sst "setState()"
 this.setState((state) => { return { ${1}: ${2} } });
 endsnippet

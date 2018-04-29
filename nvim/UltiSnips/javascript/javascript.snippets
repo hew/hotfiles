@@ -1,6 +1,4 @@
-#
-# const & let
-#
+# const & let ------------------------
 snippet const "const x = b;"
 const ${1} = ${0};
 endsnippet
@@ -9,21 +7,14 @@ snippet let "let a = b;"
 let ${1} = ${0};
 endsnippet
 
-#
-# Functions
-#
+
+# Functions --------------------------
 snippet fun "const a = () => {};"
 const ${1} = (${2}) => {${0:${VISUAL}}}
 endsnippet
 
 snippet => "() => {}"
 (${1}) => {${0:${VISUAL}}}
-endsnippet
-
-snippet b "{}"
-{
- ${1}
-}
 endsnippet
 
 snippet fun* "Generator function"
@@ -33,19 +24,22 @@ function* ${1:function_name}(${2}) {
 endsnippet
 
 
+# Brackets --------------------------
+snippet b "{}"
+{
+ ${1}
+}
+endsnippet
 
-#
-# Imports
-#
+
+# Imports ---------------------------
 snippet imp "import xyz from 'xyz'"
 import ${1} from '${2:$1}';
 endsnippet
 
 
+# Classes --------------------------
 
-#
-# Classes
-#
 snippet class "class x {}"
 class ${1} {
   ${0:${VISUAL}}
@@ -54,9 +48,7 @@ endsnippet
 
 
 
-#
-# Loops
-#
+# Loops ----------------------------
 snippet for "for (const prop of object}) { ... }"
 for (const ${1:prop} of ${2:object}) {
   ${0:$1}
@@ -64,17 +56,13 @@ for (const ${1:prop} of ${2:object}) {
 endsnippet
 
 
-#
-# String Interpolation
-#
+# String Interpolation ----------------------------
 snippet ${
 ${${1}}${0}
 endsnippet
 
 
-#
-# Flow Control
-#
+# Flow Control ----------------------------
 snippet if "if (condition) { ... }"
 if (${1:true}) {
   ${0:${VISUAL}}
@@ -118,17 +106,14 @@ try {
 endsnippet
 
 
-#
-# Error Handling
-# 
+# Error Handling ----------------------------
+ 
 snippet err "throw new Error()"
 throw new Error('${1:error message}')
 endsnippet
 
 
-#
-# Documentation
-#
+# Documentation ----------------------------
 snippet /** "doc string"
 /**
  * ${0:description}
@@ -145,9 +130,7 @@ snippet @ret "@ret {type} description"
 endsnippet
 
 
-#
-# JSON
-#
+# JSON ----------------------------
 snippet jsonp "JSON.parse"
 JSON.parse(${0:jstr});
 endsnippet
@@ -157,9 +140,7 @@ JSON.stringify(${0:object});
 endsnippet
 
 
-#
-# DOM
-#
+# DOM ----------------------------
 snippet setTime "setTimeout()"
 setTimeout(() => {${0}}${2}, ${1:10});
 endsnippet
