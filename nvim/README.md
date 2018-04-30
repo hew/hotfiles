@@ -1,10 +1,14 @@
-# My vimrc  
+# My NeoVim Setup
 
-My Vim configuration file. 
+[![MIT Licence](https://badges.frapsoft.com/os/mit/mit.svg?v=103)](https://opensource.org/licenses/mit-license.php)
 
-It's not with my [other dotfiles](http://github.com/hew/hotfiles) because I'm too lazy to figure out how to get vim to place nice with `XDG_CONFIG_HOME`.
 
----
+## Quick Summary
+* FZF for fuzzy switching
+* PrettierAsync / ReasonPrettyPrint on trigger
+* `:Ex` opens the relative directory
+* `:NERD` opens to project root
+* TODO: `:AG` setup needs some work
 
-MIT License
-http://opensource.org/licenses/MIT
+## For More
+See [init.vim](https://github.com/hew/hotfiles/blob/master/nvim/init.vim)
