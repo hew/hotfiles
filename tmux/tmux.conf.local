@@ -4,6 +4,12 @@ bind C-a send-prefix
 # Repeat prefix for last window
 bind-key C-a last-window
 
+# Ergonomic Shuffle
+bind-key -n C-s next-window
+bind-key -n F12 next-window
+bind-key -n F11 previous-window
+bind-key -n C-t swap-pane
+
 # Keys
 bind k confirm kill-window
 bind K confirm kill-server
@@ -18,7 +24,7 @@ bind . command-prompt
 bind l last-window
 bind space command-prompt -p index "select-window"
 bind r source-file ~/.tmux.conf.local
-bind-key -n F1 next-window
+bind R source-file ~/.tmux.conf
 
 # Use Vim!
 setw -g mode-keys vi

@@ -6,6 +6,7 @@ call plug#begin('~/.config/nvim/plugged')
 
   " Nice-to-haves
   Plug 'junegunn/vim-peekaboo'
+  Plug 'rudrab/vim-coogle'
 
   " Pope Essentials
   Plug 'tpope/vim-fugitive'
@@ -26,19 +27,19 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'junegunn/fzf.vim'
   Plug '/usr/local/opt/fzf'
   Plug 'Shougo/neoinclude.vim'
-  Plug 'scrooloose/nerdtree',             { 'on':  'NERDTreeToggle'       }
+  Plug 'scrooloose/nerdtree',                 { 'on':  'NERDTreeToggle'       }
 
   " Snippets
-  Plug 'SirVer/ultisnips',                { 'for': 'javascript'           }
-  Plug 'honza/vim-snippets',              { 'for': 'javascript'           }
+  Plug 'SirVer/ultisnips',                    { 'for': 'javascript'           }
+  Plug 'honza/vim-snippets',                  { 'for': 'javascript'           }
 
   " Language & Syntax
   Plug 'isRuslan/vim-es6'
-  Plug 'reasonml-editor/vim-reason',      { 'for': 'reason'               }
-  Plug 'autozimu/LanguageClient-neovim',  { 'branch': 'next', 'do': 'bash install.sh' }
-  Plug 'prettier/vim-prettier',           { 'for': 'javascript'           }
-  Plug 'mattn/emmet-vim',                 { 'for': 'javascript'           }
-  " Plug 'w0rp/ale',                        { 'for': 'javascript'           }
+  Plug 'reasonml-editor/vim-reason-plus',     { 'for': 'reason'               }
+  Plug 'autozimu/LanguageClient-neovim',      { 'branch': 'next', 'do': 'bash install.sh' }
+  Plug 'prettier/vim-prettier',               { 'for': 'javascript'           }
+  Plug 'mattn/emmet-vim',                     { 'for': 'javascript'           }
+  " Plug 'w0rp/ale',                          { 'for': 'javascript'           }
 
   " No need for completion when running inside Oni
   if has("gui_running")
@@ -94,8 +95,8 @@ autocmd FileType reason map <buffer> <D-M> :ReasonPrettyPrint<Cr>
 
 " --- Language Server ---
 let g:LanguageClient_serverCommands = {
-    \ 'reason': ['ocaml-language-server', '--stdio'],
-    \ 'ocaml': ['ocaml-language-server', '--stdio'],
+    \ 'reason': ['reason-language-server.native'],
+    \ 'ocaml': ['reason-language-server.native'],
     \ 'javascript': ['typescript-language-server', '--stdio'],
     \ }
 nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>

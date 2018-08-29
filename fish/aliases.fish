@@ -6,6 +6,8 @@ alias ea 'e ~/.config/fish/aliases.fish'
 alias ef 'e ~/.config/fish/config.fish'
 alias eg 'e ~/.config/git/config'
 alias ev 'e ~/.config/nvim/init.vim'
+alias evp 'e ~/.config/nvim/modules/plugins.vim'
+alias evg 'e ~/.config/nvim/modules/general.vim'
 alias ep 'e ~/.config/nvim/modules/plugins.vim'
 alias tc 'e ~/.config/tmux/tmux.conf'
 alias fig 'e ~/.config'
@@ -20,8 +22,8 @@ alias gat 'gatsby'
 alias t '/Users/hew/go/bin/td'
 
 # ----- Sites Shortcuts ----- 
-alias work 'e ~/Sites/feathers-practice'
-alias work2 'e ~/Sites/wy'
+alias work 'e ~/Sites/__work/wy-server'
+alias work2 'e ~/Sites/__work/wy-client'
 
 ## ----- General Unix ----- 
 alias l='ls -ld .?*'
@@ -52,6 +54,7 @@ alias pathc='pwd ^| pbcopy'
 
 # Pretty Cat
 alias ccat='pygmentize -g'
+alias cat=bat
 
 
 ## ----- Navigation -----
