@@ -7,6 +7,7 @@ call plug#begin('~/.config/nvim/plugged')
   " Nice-to-haves
   Plug 'junegunn/vim-peekaboo'
   Plug 'rudrab/vim-coogle'
+  Plug 'mbbill/undotree'
 
   " Pope Essentials
   Plug 'tpope/vim-fugitive'
@@ -28,6 +29,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug '/usr/local/opt/fzf'
   Plug 'Shougo/neoinclude.vim'
   Plug 'scrooloose/nerdtree',                 { 'on':  'NERDTreeToggle'       }
+  Plug 'ddrscott/vim-side-search'
 
   " Snippets
   Plug 'SirVer/ultisnips',                    { 'for': 'javascript'           }
@@ -103,6 +105,7 @@ nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
 nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 
+
 " --- Ale ---
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
@@ -133,6 +136,28 @@ let g:user_emmet_settings = {
       \  },
       \}
 
+" --- Side Search ---
+" How should we execute the search?
+" --heading and --stats are required!
+let g:side_search_prg = 'ag --word-regexp'
+  \. " --ignore='*.js.map'"
+  \. " --heading --stats -B 1 -A 4"
+
+" SideSearch current word and return to original window
+nnoremap <Leader>ss :SideSearch <C-r><C-w><CR> | wincmd p
+
+" Create an shorter `SS` command
+command! -complete=file -nargs=+ SS execute 'SideSearch <args>'
+
+" or command abbreviation
+cabbrev SS SideSearch
+
+
+" Can use `vnew` or `new`
+let g:side_search_splitter = 'vnew'
+
+" I like 40% splits, change it if you don't
+let g:side_search_split_pct = 0.4
 
 " --- GH Dashboard ---
 let g:github_dashboard = { 'username': 'hew', 'password': $GHTOKEN }

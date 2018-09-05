@@ -8,7 +8,6 @@ alias eg 'e ~/.config/git/config'
 alias ev 'e ~/.config/nvim/init.vim'
 alias evp 'e ~/.config/nvim/modules/plugins.vim'
 alias evg 'e ~/.config/nvim/modules/general.vim'
-alias ep 'e ~/.config/nvim/modules/plugins.vim'
 alias tc 'e ~/.config/tmux/tmux.conf'
 alias fig 'e ~/.config'
 
@@ -22,8 +21,8 @@ alias gat 'gatsby'
 alias t '/Users/hew/go/bin/td'
 
 # ----- Sites Shortcuts ----- 
-alias work 'e ~/Sites/__work/wy-server'
-alias work2 'e ~/Sites/__work/wy-client'
+alias work-server 'cd ~/Sites/__work/wy-server ; e .'
+alias work-client 'cd ~/Sites/__work/wy-mobile-reason ; e .'
 
 ## ----- General Unix ----- 
 alias l='ls -ld .?*'
@@ -65,7 +64,6 @@ alias sites 'cd ~/Sites'
 alias fig 'cd ~/.config/'
 alias desk 'cd ~/Desktop'
 alias dev 'cd ~/Dev'
-alias klue 'cd ~/kluein/klue'
 
 # Shorthands
 alias cd.. 'cd ..'

@@ -1,5 +1,7 @@
+"------------------------------------------------------------------- "
 " Preferences:
 "------------------------------------------------------------------- "
+
 noremap <space> :
 nnoremap <expr> <D-J> &diff ? ']c' : '<C-W>j'
 nnoremap <expr> <D-K> &diff ? '[c' : '<C-W>k'
@@ -16,10 +18,18 @@ vnoremap <A-j> :m '>+1<CR>gv=gv
 vnoremap <A-k> :m '<-2<CR>gv=gv
 
 " Turn off arrow keys...
-noremap <Up> <NOP>
-noremap <Down> <NOP>
-noremap <Left> <NOP>
-noremap <Right> <NOP>
+" noremap <Up> <NOP>
+" noremap <Down> <NOP>
+" noremap <Left> <NOP>
+" noremap <Right> <NOP>
+
+if has("persistent_undo")
+  set undodir=~/.undodir/
+  set undofile
+endif
+
+" Change to current directory
+noremap <leader>cd cd %:p:h
 
 " Auto-source init.vim (seems to have a memory leak or something)
 " au BufWritePost init.vim source %
