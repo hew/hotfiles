@@ -21,8 +21,8 @@ alias gat 'gatsby'
 alias t '/Users/hew/go/bin/td'
 
 # ----- Sites Shortcuts ----- 
-alias work-server 'cd ~/Sites/__work/wy-server ; e .'
-alias work-client 'cd ~/Sites/__work/wy-mobile-reason ; e .'
+alias work-server 'cd ~/Documents/Work/sul-server ; e .'
+alias work-client 'cd ~/Documents/Work/sul-client ; e .'
 
 ## ----- General Unix ----- 
 alias l='ls -ld .?*'

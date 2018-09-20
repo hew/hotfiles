@@ -22,6 +22,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'jguddas/onecustom.vim'
   Plug 'h3xx/vim-late_evening'
   Plug 'itchyny/landscape.vim'
+  Plug 'mhartington/oceanic-next'
   
   " Search / Fuzzy / Files
   Plug 'brookhong/ag.vim'
@@ -37,11 +38,12 @@ call plug#begin('~/.config/nvim/plugged')
 
   " Language & Syntax
   Plug 'isRuslan/vim-es6'
+  Plug 'davidyorr/vim-es6-unused-imports'
   Plug 'reasonml-editor/vim-reason-plus',     { 'for': 'reason'               }
   Plug 'autozimu/LanguageClient-neovim',      { 'branch': 'next', 'do': 'bash install.sh' }
   Plug 'prettier/vim-prettier',               { 'for': 'javascript'           }
   Plug 'mattn/emmet-vim',                     { 'for': 'javascript'           }
-  " Plug 'w0rp/ale',                          { 'for': 'javascript'           }
+  Plug 'w0rp/ale',                            { 'for': 'javascript'           }
 
   " No need for completion when running inside Oni
   if has("gui_running")
@@ -54,13 +56,6 @@ call plug#end()
 "------------------------------------------------------------------- "
 " Plugins Config:
 "------------------------------------------------------------------- "
-
-" --- NERDTree ---
-" let g:NERDCompactSexyComs = 1
-" let g:NERDSpaceDelims = 1
-" let g:NERDDefaultAlign = 'left'
-" let g:NERDCustomDelimiters = { 'reason': { 'left': '/*','right': '*/', 'nested': 1 } }
-" nmap zz <plug>NERDCommenterComment
 
 
 " --- Commentary ---
@@ -104,6 +99,13 @@ let g:LanguageClient_serverCommands = {
 nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
 nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+nnoremap <silent> <F1> :call LanguageClient_contextMenu()<CR>
+
+set completefunc=LanguageClient#complete
+set formatexpr=LanguageClient#textDocument_rangeFormatting_sync()
+let g:LanguageClient_changeThrottle = 1
+" let g:LanguageClient_hoverPreview = 'Never'
+let g:LanguageClient_completionPreferTextEdit = 1
 
 
 " --- Ale ---
@@ -127,6 +129,10 @@ au FileType fzf tnoremap <buffer> <Esc> <Esc>
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#file#enable_buffer_path = 1
 " let g:deoplete#complete_method = 'omnifunc'
+" let g:deoplete#disable_auto_complete = 1
+autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+" Keeps the preview window always closed
+" set completeopt-=preview
 
 
 " --- Emmet ---
@@ -137,27 +143,28 @@ let g:user_emmet_settings = {
       \}
 
 " --- Side Search ---
-" How should we execute the search?
-" --heading and --stats are required!
 let g:side_search_prg = 'ag --word-regexp'
   \. " --ignore='*.js.map'"
   \. " --heading --stats -B 1 -A 4"
 
 " SideSearch current word and return to original window
 nnoremap <Leader>ss :SideSearch <C-r><C-w><CR> | wincmd p
-
 " Create an shorter `SS` command
 command! -complete=file -nargs=+ SS execute 'SideSearch <args>'
-
 " or command abbreviation
 cabbrev SS SideSearch
-
-
 " Can use `vnew` or `new`
 let g:side_search_splitter = 'vnew'
-
 " I like 40% splits, change it if you don't
 let g:side_search_split_pct = 0.4
 
+
 " --- GH Dashboard ---
-let g:github_dashboard = { 'username': 'hew', 'password': $GHTOKEN }
+" let g:github_dashboard = { 'username': 'hew', 'password': $GHTOKEN }
+
+" --- NERDTree ---
+" let g:NERDCompactSexyComs = 1
+" let g:NERDSpaceDelims = 1
+" let g:NERDDefaultAlign = 'left'
+" let g:NERDCustomDelimiters = { 'reason': { 'left': '/*','right': '*/', 'nested': 1 } }
+" nmap zz <plug>NERDCommenterComment

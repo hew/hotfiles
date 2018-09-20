@@ -61,6 +61,9 @@ brew install git-extras
 brew install hub
 brew install rename
 brew install tree
+brew install diff-so-fancy
+brew install fzf
+brew install the_silver_searcher
 
 # Install Heroku
 brew install heroku-toolbelt

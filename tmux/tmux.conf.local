@@ -1,14 +1,19 @@
-set-option -g prefix C-a
-bind C-a send-prefix
+set-option -g prefix C-p
+bind C-p send-prefix
 
 # Repeat prefix for last window
-bind-key C-a last-window
+bind-key C-p last-window
 
 # Ergonomic Shuffle
 bind-key -n C-s next-window
 bind-key -n F12 next-window
 bind-key -n F11 previous-window
 bind-key -n C-t swap-pane
+
+bind-key -n F9 resize-pane -L 10
+bind-key -n F10 resize-pane -R 10
+bind-key -n C-F9 resize-pane -D 10
+bind-key -n C-F10 resize-pane -U 10
 
 # Keys
 bind k confirm kill-window

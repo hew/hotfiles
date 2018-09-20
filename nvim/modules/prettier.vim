@@ -1,6 +1,6 @@
 "max line length that prettier will wrap on
 " Prettier efault: 80
-let g:prettier#config#print_width = 80
+let g:prettier#config#print_width = 113
 
 " Force Async
 let g:prettier#exec_cmd_async = 1
