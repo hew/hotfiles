@@ -5,11 +5,12 @@ alias e 'nvim'
 alias ea 'e ~/.config/fish/aliases.fish'
 alias ef 'e ~/.config/fish/config.fish'
 alias eg 'e ~/.config/git/config'
-alias ev 'e ~/.config/nvim/init.vim'
+alias ev 'e ~/.config/nvim/modules/general.vim'
+alias ek 'e ~/.config/kitty/kitty.conf'
 alias evp 'e ~/.config/nvim/modules/plugins.vim'
-alias evg 'e ~/.config/nvim/modules/general.vim'
 alias tc 'e ~/.config/tmux/tmux.conf'
 alias fig 'e ~/.config'
+alias of 'open ~/.config'
 
 # ----- Other Config ----- 
 alias eh 'e ~/.hyper.js'
@@ -94,7 +95,8 @@ alias sk './bin/webpack-dev-server'
 
 # Search & Stuff
 alias findpid="ps axww -o pid,user,%cpu,%mem,start,time,command ^| selecta ^| sed 's/^ *//' ^| cut -f1 -d' '"
-alias agg 'ag --nobreak --nonumbers --noheading . | fzf'
+# alias agg 'agg --nobreak --nonumbers --noheading . | fzf'
+alias ag='ag --path-to-ignore ~/.ignore'
 
 # Delete All .DS_Store files
 alias nomore='find ./ -iname ".DS_Store" -delete'

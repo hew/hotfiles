@@ -4,46 +4,39 @@
 
 call plug#begin('~/.config/nvim/plugged')
 
-  " Nice-to-haves
-  Plug 'junegunn/vim-peekaboo'
-  Plug 'rudrab/vim-coogle'
-  Plug 'mbbill/undotree'
-
   " Pope Essentials
-  Plug 'tpope/vim-fugitive'
+  " Plug 'tpope/vim-fugitive'
   Plug 'tpope/vim-surround'
   Plug 'tpope/vim-commentary'
   Plug 'tpope/vim-eunuch'
 
+  " Junegunn Essentials
+  " Plug 'junegunn/gv.vim'
+  Plug 'junegunn/fzf.vim'
+  Plug 'junegunn/vim-peekaboo'
+  Plug 'junegunn/vim-slash'
+
   " Themes
-  Plug 'mhartington/oceanic-next'
-  Plug 'tpope/vim-vividchalk'
-  Plug 'NLKNguyen/papercolor-theme'
-  Plug 'jguddas/onecustom.vim'
-  Plug 'h3xx/vim-late_evening'
-  Plug 'itchyny/landscape.vim'
   Plug 'mhartington/oceanic-next'
   
   " Search / Fuzzy / Files
-  Plug 'brookhong/ag.vim'
-  Plug 'junegunn/fzf.vim'
+  " Plug 'terryma/vim-multiple-cursors'
   Plug '/usr/local/opt/fzf'
-  Plug 'Shougo/neoinclude.vim'
   Plug 'scrooloose/nerdtree',                 { 'on':  'NERDTreeToggle'       }
   Plug 'ddrscott/vim-side-search'
 
   " Snippets
-  Plug 'SirVer/ultisnips',                    { 'for': 'javascript'           }
-  Plug 'honza/vim-snippets',                  { 'for': 'javascript'           }
+  " Plug 'SirVer/ultisnips',                    { 'for': 'javascript'           }
+  " Plug 'honza/vim-snippets',                  { 'for': 'javascript'           }
+  Plug 'andreyorst/SimpleSnippets.vim'
 
   " Language & Syntax
   Plug 'isRuslan/vim-es6'
-  Plug 'davidyorr/vim-es6-unused-imports'
   Plug 'reasonml-editor/vim-reason-plus',     { 'for': 'reason'               }
-  Plug 'autozimu/LanguageClient-neovim',      { 'branch': 'next', 'do': 'bash install.sh' }
   Plug 'prettier/vim-prettier',               { 'for': 'javascript'           }
   Plug 'mattn/emmet-vim',                     { 'for': 'javascript'           }
-  Plug 'w0rp/ale',                            { 'for': 'javascript'           }
+  " Plug 'w0rp/ale',                            { 'for': 'javascript'           }
+  Plug 'autozimu/LanguageClient-neovim',      { 'for': 'reason', 'branch': 'next', 'do': 'bash install.sh' }
 
   " No need for completion when running inside Oni
   if has("gui_running")
@@ -56,7 +49,6 @@ call plug#end()
 "------------------------------------------------------------------- "
 " Plugins Config:
 "------------------------------------------------------------------- "
-
 
 " --- Commentary ---
 nnoremap zz :Commentary<CR>
@@ -78,17 +70,19 @@ vmap ` S`
 
 
 " --- UltiSnips ---
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+let g:SimpleSnippets_search_path = $HOME.'/.config/nvim/snippets/'
+" let g:UltiSnipsExpandTrigger="<tab>"
+" let g:UltiSnipsJumpForwardTrigger="<tab>"
+" let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
+let g:SimpleSnippetsExpandOrJumpTrigger = "<Tab>"
+let g:SimpleSnippetsJumpBackwardTrigger = "<S-Tab>"
+let g:SimpleSnippetsJumpToLastTrigger = "<C-j>"
 
 
 " --- Prettier ---
 source ~/.config/nvim/modules/prettier.vim
 
-
-" --- Prettier ---
-autocmd FileType reason map <buffer> <D-M> :ReasonPrettyPrint<Cr>
 
 " --- Language Server ---
 let g:LanguageClient_serverCommands = {
@@ -100,12 +94,12 @@ nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
 nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 nnoremap <silent> <F1> :call LanguageClient_contextMenu()<CR>
-
-set completefunc=LanguageClient#complete
+autocmd FileType reason map <buffer> <D-M> :ReasonPrettyPrint<Cr>
 set formatexpr=LanguageClient#textDocument_rangeFormatting_sync()
-let g:LanguageClient_changeThrottle = 1
+" let g:LanguageClient_changeThrottle = 1
+" set completefunc=LanguageClient#complete
 " let g:LanguageClient_hoverPreview = 'Never'
-let g:LanguageClient_completionPreferTextEdit = 1
+" let g:LanguageClient_completionPreferTextEdit = 1
 
 
 " --- Ale ---
@@ -121,18 +115,25 @@ let g:ale_linters = {
       \}
 
 " --- FZF ---
-imap <c-x><c-f> <plug>(fzf-complete-file-ag)
+imap <c-x><c-x> <plug>(fzf-complete-file-ag)
 au FileType fzf tnoremap <buffer> <Esc> <Esc>
 
 
 " --- Deoplete ---
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#file#enable_buffer_path = 1
-" let g:deoplete#complete_method = 'omnifunc'
+let g:deoplete#auto_complete_start_length = 2
+let g:deoplete#enable_smart_case = 1
 " let g:deoplete#disable_auto_complete = 1
-autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
-" Keeps the preview window always closed
-" set completeopt-=preview
+" let g:deoplete#complete_method = 'omnifunc'
+" autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+set completeopt-=preview " Keeps the preview window always closed
+
+
+" --- Neosnippets ---
+" let g:neosnippet#disable_runtime_snippets = 0
+" Tell Neosnippet about the other snippets
+" let g:neosnippet#snippets_directory='~/.config/nvim/UltiSnips/'
 
 
 " --- Emmet ---
@@ -142,10 +143,11 @@ let g:user_emmet_settings = {
       \  },
       \}
 
+
 " --- Side Search ---
 let g:side_search_prg = 'ag --word-regexp'
-  \. " --ignore='*.js.map'"
-  \. " --heading --stats -B 1 -A 4"
+  \. " --path-to-ignore ~/.ignore "
+ \. " --heading --stats -B 1 -A 4"
 
 " SideSearch current word and return to original window
 nnoremap <Leader>ss :SideSearch <C-r><C-w><CR> | wincmd p
@@ -159,8 +161,22 @@ let g:side_search_splitter = 'vnew'
 let g:side_search_split_pct = 0.4
 
 
+let g:multi_cursor_use_default_mapping=0
+
+" --- Multi Cursor ---
+" let g:multi_cursor_start_word_key      = '<C-n>'
+" let g:multi_cursor_select_all_word_key = '<A-n>'
+" let g:multi_cursor_start_key           = 'g<C-n>'
+" let g:multi_cursor_select_all_key      = 'g<A-n>'
+" let g:multi_cursor_next_key            = '<C-n>'
+" let g:multi_cursor_prev_key            = '<C-p>'
+" let g:multi_cursor_skip_key            = '<C-x>'
+" let g:multi_cursor_quit_key            = '<Esc>'
+
+
 " --- GH Dashboard ---
 " let g:github_dashboard = { 'username': 'hew', 'password': $GHTOKEN }
+
 
 " --- NERDTree ---
 " let g:NERDCompactSexyComs = 1

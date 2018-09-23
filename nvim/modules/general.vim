@@ -63,7 +63,7 @@ hi Type    cterm=italic
 hi ctermbg cterm=none
 
 " Temp hack (https://github.com/zeit/hyper/issues/2592)
-" hi Normal ctermbg=none
+hi Normal ctermbg=none
 
 let g:oceanic_next_terminal_bold = 1
 let g:oceanic_next_terminal_italic = 1
@@ -87,6 +87,13 @@ inoremap <A-j> <Esc>:m .+1<CR>==gi
 inoremap <A-k> <Esc>:m .-2<CR>==gi
 vnoremap <A-j> :m '>+1<CR>gv=gv
 vnoremap <A-k> :m '<-2<CR>gv=gv
+
+nnoremap <A-Up> :m .+1<CR>==
+nnoremap <A-Down> :m .-2<CR>==
+inoremap <A-Up> <Esc>:m .+1<CR>==gi
+inoremap <A-Down> <Esc>:m .-2<CR>==gi
+vnoremap <A-Up> :m '>+1<CR>gv=gv
+vnoremap <A-Down> :m '<-2<CR>gv=gv
 
 " Turn off arrow keys...
 " noremap <Up> <NOP>
@@ -133,7 +140,6 @@ vmap <F6> :sort ui<Cr>
 " Resize Window
 imap <F5> <Esc>:vertical resize -10<CR>
 nmap <F5> :vertical resize -10<CR>
-
 
 "------------------------------------------------------------------- "
 " Cursor:

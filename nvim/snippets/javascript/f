@@ -1,0 +1,3 @@
+const ${0:name} = (${1:arguments}) => {
+	${2:/* body */}
+};

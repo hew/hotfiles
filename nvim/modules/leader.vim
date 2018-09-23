@@ -28,4 +28,4 @@ noremap <leader>y "*y
 noremap <leader><leader>p :set paste<CR>:put  *<CR>:set nopaste<CR>
 
 " Common
-noremap <leader>ec e ~/.config/nvim/modules/preferences.vim
+noremap <leader>ec e $CONFIG./nvim/modules/preferences.vim<CR>
