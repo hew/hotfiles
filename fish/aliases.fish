@@ -11,6 +11,8 @@ alias evp 'e ~/.config/nvim/modules/plugins.vim'
 alias tc 'e ~/.config/tmux/tmux.conf'
 alias fig 'e ~/.config'
 alias of 'open ~/.config'
+alias ts 'sh ~/.config/tmux/tmux-start'
+alias tp 'sh ~/.config/tmux/tmux-new'
 
 # ----- Other Config ----- 
 alias eh 'e ~/.hyper.js'

@@ -1,5 +1,8 @@
-set-option -g prefix C-p
-bind C-p send-prefix
+
+# -- other stuff -------------------------------------------------------------------
+
+set-option -g prefix DC
+bind DC send-prefix
 
 # Repeat prefix for last window
 bind-key C-p last-window
@@ -14,8 +17,6 @@ bind-key -n F9 resize-pane -L 10
 bind-key -n F10 resize-pane -R 10
 bind-key -n C-F9 resize-pane -D 10
 bind-key -n C-F10 resize-pane -U 10
-
-# bind-key -n C-F12 kill-pane -a -t
 
 # Keys
 bind k confirm kill-window
@@ -49,4 +50,3 @@ set -as terminal-overrides ',xterm*:sitm=\E[3m'
 # activity
 set -g monitor-activity on
 set -g visual-activity off
-

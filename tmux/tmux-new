@@ -1,0 +1,6 @@
+#!/bin/bash
+
+tmux \
+  new-window -c '#{pane_current_path}' \; \
+  split-window -h \; \
+  split-window -v \; \
