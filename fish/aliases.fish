@@ -24,8 +24,8 @@ alias gat 'gatsby'
 alias t '/Users/hew/go/bin/td'
 
 # ----- Sites Shortcuts ----- 
-alias work-server 'cd ~/Documents/Work/sul-server ; e .'
-alias work-client 'cd ~/Documents/Work/sul-client ; e .'
+alias work-server 'cd ~/Documents/Work/sul-server'
+alias work-client 'cd ~/Documents/Work/sul-client'
 
 ## ----- General Unix ----- 
 alias l='ls -ld .?*'
@@ -49,7 +49,7 @@ alias get-dev='git co dev ; git pull ; git co -'
 alias path="echo $PATH ^| tr -s ':' '\n'"
 
 # Copy path
-alias pathc='pwd ^| pbcopy'
+alias copy-path='pwd ^| pbcopy'
 
 
 ## ----- Misc ----- 

@@ -34,7 +34,7 @@ set matchtime=2                         " Jump to matching parents for 30ms
 set wrapscan                            " Searches wrap around end of file
 set autoread                            " reload unedited files that changed
 set display+=lastline                   " show long last line in window
-set timeoutlen=2000                     " eliminate any lag ESC lag
+set timeoutlen=500                      " eliminate any lag ESC lag
 set shell=/usr/local/bin/fish           " Use the fish shell
 set ttimeoutlen=0
 set listchars=tab:▸–,trail:·,extends:❯,precedes:❮,nbsp:⌴

@@ -17,7 +17,8 @@ nnoremap <leader>d :ALEFix<CR>
 
 " Search
 nnoremap <leader><leader>a :AgFromSearch!<CR>
-nnoremap <leader>a :Ag! --ignore=node_modules
+" nnoremap <leader>a :Ag! --ignore=node_modules
+nnoremap <leader>s :Ack 
 
 " NERDTree
 nnoremap <leader><leader>f :NERDTreeToggle<CR>

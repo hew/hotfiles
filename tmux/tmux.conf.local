@@ -1,11 +1,18 @@
 
 # -- other stuff -------------------------------------------------------------------
 
-set-option -g prefix DC
-bind DC send-prefix
+# Set Custom Prefix
+set-option -g prefix C-p
 
 # Repeat prefix for last window
 bind-key C-p last-window
+
+# Progressive keybinds
+bind C-p send-prefix
+
+# Copy to Clipboard
+# TODO: This doesn't work - on Kitty at least.
+# bind -T copy-mode-vi y send-keys -X copy-pipe-and-cancel 'pbcopy'
 
 # Ergonomic Shuffle
 bind-key -n C-s next-window
@@ -13,10 +20,10 @@ bind-key -n F12 next-window
 bind-key -n F11 previous-window
 bind-key -n C-t swap-pane
 
-bind-key -n F9 resize-pane -L 10
-bind-key -n F10 resize-pane -R 10
-bind-key -n C-F9 resize-pane -D 10
-bind-key -n C-F10 resize-pane -U 10
+bind-key -n F9 resize-pane -L 5
+bind-key -n F10 resize-pane -R 5
+bind-key -n C-F9 resize-pane -D 5
+bind-key -n C-F10 resize-pane -U 5
 
 # Keys
 bind k confirm kill-window
@@ -24,10 +31,10 @@ bind K confirm kill-server
 bind : split-window -c "#{pane_current_path}"
 bind % split-window -h -c "#{pane_current_path}"
 bind c new-window -c "#{pane_current_path}"
-bind < resize-pane -L 10
-bind > resize-pane -R 10
-bind - resize-pane -D 10
-bind + resize-pane -U 10
+# bind < resize-pane -L 10
+# bind > resize-pane -R 10
+# bind - resize-pane -D 10
+# bind + resize-pane -U 10
 bind . command-prompt
 bind l last-window
 bind space command-prompt -p index "select-window"
@@ -37,8 +44,9 @@ bind R source-file ~/.tmux.conf
 # Use Vim!
 setw -g mode-keys vi
 
+
 # No Lag on Inputs
-set -s escape-time 0
+set -s escape-time 22
 
 # Set the default terminal mode to 256color mode (italics)
 set -g default-terminal "xterm-256color-italic"
