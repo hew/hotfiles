@@ -16,12 +16,20 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'junegunn/vim-peekaboo'
   Plug 'junegunn/vim-slash'
 
+  " Completion
+  Plug 'ncm2/ncm2'
+  Plug 'ncm2/ncm2-neoinclude' | Plug 'Shougo/neoinclude.vim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'ncm2/nvim-typescript'
+  Plug 'ncm2/ncm2-html-subscope'
+  Plug 'ncm2/ncm2-path'
+
   " Themes
   Plug 'mhartington/oceanic-next'
   
   " Search / Fuzzy / Files
   Plug '/usr/local/opt/fzf'
-  Plug 'scrooloose/nerdtree',                 { 'on':  'NERDTreeToggle'       }
+  " Plug 'scrooloose/nerdtree',                 { 'on':  'NERDTreeToggle'       }
   Plug 'liuchengxu/vim-which-key'
   Plug 'mileszs/ack.vim'
 
@@ -36,20 +44,20 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'w0rp/ale',                            { 'for': 'javascript'           }
   Plug 'autozimu/LanguageClient-neovim',      { 'for': 'reason', 'branch': 'next', 'do': 'bash install.sh' }
 
-  " No need for completion when running inside Oni
-  if has("gui_running")
-  else
-    Plug 'Shougo/deoplete.nvim',          { 'do': ':UpdateRemotePlugins' }
-  endif
+  " " No need for completion when running inside Oni
+  " if has("gui_running")
+  " else
+  "   Plug 'Shougo/deoplete.nvim',          { 'do': ':UpdateRemotePlugins' }
+  " endif
 
 call plug#end()
+
 
 "------------------------------------------------------------------- "
 " Sourced Config Files:
 "------------------------------------------------------------------- "
 " (should be referenced AFTER initiating the plugins above)
 source ~/.config/nvim/modules/prettier.vim
-source ~/.config/nvim/modules/which-key.vim
 
 
 "------------------------------------------------------------------- "
@@ -72,6 +80,13 @@ let g:ale_linters = {
 
 " --- Commentary ---
 nnoremap zz :Commentary<CR>
+
+" --- Completion ---
+
+" enable ncm2 for all buffers
+autocmd BufEnter * call ncm2#enable_for_buffer()
+
+
 
 
 " --- Deoplete ---
@@ -107,14 +122,13 @@ let g:LanguageClient_serverCommands = {
     \ 'javascript': ['typescript-language-server', '--stdio'],
     \ }
 nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <F3> :call LanguageClient#textDocument_definition()<CR>
 nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 nnoremap <silent> <F1> :call LanguageClient_contextMenu()<CR>
 autocmd FileType reason map <buffer> <D-M> :ReasonPrettyPrint<Cr>
 set formatexpr=LanguageClient#textDocument_rangeFormatting_sync()
+let g:LanguageClient_hoverPreview = 'Always'
 " let g:LanguageClient_changeThrottle = 1
-" let g:LanguageClient_hoverPreview = 'Never'
-" let g:LanguageClient_completionPreferTextEdit = 1
 
 
 " --- FZF ---
