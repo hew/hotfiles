@@ -106,6 +106,7 @@ set formatexpr=LanguageClient#textDocument_rangeFormatting_sync()
 let g:LanguageClient_changeThrottle = 1
 " let g:LanguageClient_hoverPreview = 'Never'
 let g:LanguageClient_completionPreferTextEdit = 1
+let g:LanguageClient_autoStart = 1
 
 
 " --- Ale ---
@@ -142,29 +143,3 @@ let g:user_emmet_settings = {
       \  },
       \}
 
-" --- Side Search ---
-let g:side_search_prg = 'ag --word-regexp'
-  \. " --ignore='*.js.map'"
-  \. " --heading --stats -B 1 -A 4"
-
-" SideSearch current word and return to original window
-nnoremap <Leader>ss :SideSearch <C-r><C-w><CR> | wincmd p
-" Create an shorter `SS` command
-command! -complete=file -nargs=+ SS execute 'SideSearch <args>'
-" or command abbreviation
-cabbrev SS SideSearch
-" Can use `vnew` or `new`
-let g:side_search_splitter = 'vnew'
-" I like 40% splits, change it if you don't
-let g:side_search_split_pct = 0.4
-
-
-" --- GH Dashboard ---
-" let g:github_dashboard = { 'username': 'hew', 'password': $GHTOKEN }
-
-" --- NERDTree ---
-" let g:NERDCompactSexyComs = 1
-" let g:NERDSpaceDelims = 1
-" let g:NERDDefaultAlign = 'left'
-" let g:NERDCustomDelimiters = { 'reason': { 'left': '/*','right': '*/', 'nested': 1 } }
-" nmap zz <plug>NERDCommenterComment
