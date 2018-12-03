@@ -45,10 +45,10 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'autozimu/LanguageClient-neovim',      { 'for': 'reason', 'branch': 'next', 'do': 'bash install.sh' }
 
   " " No need for completion when running inside Oni
-  " if has("gui_running")
-  " else
-  "   Plug 'Shougo/deoplete.nvim',          { 'do': ':UpdateRemotePlugins' }
-  " endif
+  if has("gui_running")
+  else
+    Plug 'Shougo/deoplete.nvim',          { 'do': ':UpdateRemotePlugins' }
+  endif
 
 call plug#end()
 
@@ -117,8 +117,8 @@ let g:netrw_winsize = 20
 
 " --- Language Server ---
 let g:LanguageClient_serverCommands = {
-    \ 'reason': ['reason-language-server.native'],
-    \ 'ocaml': ['reason-language-server.native'],
+    \ 'reason': ['reason-language-server.exe'],
+    \ 'ocaml': ['reason-language-server.exe'],
     \ 'javascript': ['typescript-language-server', '--stdio'],
     \ }
 nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
