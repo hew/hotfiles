@@ -11,6 +11,7 @@ vim/.netrwhist
 vim/plugged/**
 nvim/.netrwhist
 nvim/plugged/**
+coc/extensions/node_modules
 bin/ngrok
 .DS_Store
 alacritty

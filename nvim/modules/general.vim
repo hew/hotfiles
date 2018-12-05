@@ -30,10 +30,12 @@ set splitright                              " Split preferences
 set showcmd                                 " Show which keys are pressed in normal mode
 set foldmethod=manual                       " Manual folds
 " set laststatus=2                            " Displays airline when it won't display
+set signcolumn=yes                          " always show signcolumns
 set noshowmode                              " removes '--insert--' because that is shown in Lightline"
 set matchtime=2                             " Jump to matching parents for 30ms
 set wrapscan                                " Searches wrap around end of file
 set autoread                                " reload unedited files that changed
+" set cmdheight=2                             " Better error/system messages
 set display+=lastline                       " show long last line in window
 set timeoutlen=500                          " eliminate any lag ESC lag
 set shell=/usr/local/bin/fish               " Use the fish shell
@@ -99,11 +101,9 @@ let g:oceanic_next_terminal_italic = 1
 nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>p :GFiles<CR>
 nnoremap <leader>g :GFiles?<CR>
-nnoremap <leader>sn :Snippets<CR>
 nnoremap <leader>f :Files<CR>
 
 nnoremap <Leader>z :PrettierAsync<CR>
-nnoremap <leader>v :call LanguageClient_textDocument_formatting()<CR>
 nnoremap <leader>d :ALEFix<CR>
 
 nnoremap <leader>s :Ack 
@@ -113,6 +113,9 @@ nnoremap <leader>y "*y
 nnoremap <leader><leader>p :set paste<CR>:put  *<CR>:set nopaste<CR>
 nnoremap <leader>ec e $CONFIG./nvim/modules/preferences.vim<CR>
 nnoremap <leader>cd cd %:p:h
+nnoremap <leader><BS> :only<CR>
+
+
 
 "------------------------------------------------------------------- "
 " Movement:
