@@ -1,5 +1,5 @@
 "------------------------------------------------------------------- "
-" General:
+" Set:
 "------------------------------------------------------------------- "
 set nocompatible
 filetype indent plugin on
@@ -154,16 +154,22 @@ inoremap <A-Up> <Esc>:m .-2<CR>==gi
 vnoremap <A-Down> :m '>+1<CR>gv=gv
 vnoremap <A-Up> :m '<-2<CR>gv=gv
 
+"------------------------------------------------------------------- "
+" Persistent Undo:
+"------------------------------------------------------------------- "
 
 if has("persistent_undo")
   set undodir=~/.undodir/
   set undofile
 endif
 
+"------------------------------------------------------------------- "
+" Misc:
+"------------------------------------------------------------------- "
+
 " Wrap mult-line error/linter/etc messages
 autocmd FileType qf setlocal wrap
 
-" Delete history file - never used
 au VimLeave * if filereadable("~/.config/nvim/.netrwhist")|call 
       \  delete("~/.config/nvim/.netrwhist")|endif 
 

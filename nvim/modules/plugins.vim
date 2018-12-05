@@ -21,7 +21,6 @@ call plug#begin('~/.config/nvim/plugged')
   
   " Search / Fuzzy / Files
   Plug '/usr/local/opt/fzf'
-  " Plug 'liuchengxu/vim-which-key'
   Plug 'mileszs/ack.vim'
 
   " Display
@@ -34,11 +33,6 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'prettier/vim-prettier',               { 'for': ['javascript', 'json']   }
   Plug 'autozimu/LanguageClient-neovim',      { 'for': 'reason', 'branch': 'next', 'do': 'bash install.sh' }
   Plug 'neoclide/coc.nvim',                   {'tag': '*', 'do': { -> coc#util#install()}}
-
-  " Dormant
-  " Plug 'mattn/emmet-vim',                     { 'for': 'javascript'           }
-  " Plug 'scrooloose/nerdtree',                 { 'on':  'NERDTreeToggle'       }
-  " Plug 'w0rp/ale',                            { 'for': 'javascript'           }
 
 call plug#end()
 
@@ -107,12 +101,3 @@ vmap [ S[
 vmap ] S]
 vmap ' S'
 vmap ` S`
-
-"------------------------------------------------------------------- "
-" NerdTRee:
-"------------------------------------------------------------------- "
-" let g:NERDCompactSexyComs = 1
-" let g:NERDSpaceDelims = 1
-" let g:NERDDefaultAlign = 'left'
-" let g:NERDCustomDelimiters = { 'reason': { 'left': '/*','right': '*/', 'nested': 1 } }
-" nmap zz <plug>NERDCommenterComment
