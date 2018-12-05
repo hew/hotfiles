@@ -3,7 +3,7 @@
   "coc.preferences.preferCompleteThanJumpPlaceholder": true,
    "languageserver": {
     "reason": {
-      "command": "reason-language-server.native",
+      "command": "reason-language-server.exe",
       "args": [],
       "filetypes": ["reason", "ocaml"],
       "cwd": "./src",
