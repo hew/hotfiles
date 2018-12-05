@@ -1,0 +1,16 @@
+{
+  "coc.preferences.noselect": false,
+  "coc.preferences.preferCompleteThanJumpPlaceholder": true,
+   "languageserver": {
+    "reason": {
+      "command": "reason-language-server.native",
+      "args": [],
+      "filetypes": ["reason", "ocaml"],
+      "cwd": "./src",
+      "initializationOptions": {
+      },
+      "settings": {
+      }
+    }
+  }
+}

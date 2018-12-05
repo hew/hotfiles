@@ -16,55 +16,44 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'junegunn/vim-peekaboo'
   Plug 'junegunn/vim-slash'
 
-  " Completion
-  Plug 'ncm2/ncm2'
-  Plug 'ncm2/ncm2-neoinclude' | Plug 'Shougo/neoinclude.vim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'ncm2/nvim-typescript'
-  Plug 'ncm2/ncm2-html-subscope'
-  Plug 'ncm2/ncm2-path'
-
   " Themes
   Plug 'mhartington/oceanic-next'
   
   " Search / Fuzzy / Files
   Plug '/usr/local/opt/fzf'
-  " Plug 'scrooloose/nerdtree',                 { 'on':  'NERDTreeToggle'       }
-  Plug 'liuchengxu/vim-which-key'
+  " Plug 'liuchengxu/vim-which-key'
   Plug 'mileszs/ack.vim'
 
-  " Snippets
-  Plug 'andreyorst/SimpleSnippets.vim',        { 'for': 'javascript'           }
+  " Display
+  Plug 'itchyny/lightline.vim'
 
   " Language & Syntax
   Plug 'isRuslan/vim-es6'
   Plug 'reasonml-editor/vim-reason-plus',     { 'for': 'reason'               }
-  Plug 'prettier/vim-prettier',               { 'for': 'javascript'           }
-  Plug 'mattn/emmet-vim',                     { 'for': 'javascript'           }
-  Plug 'w0rp/ale',                            { 'for': 'javascript'           }
+  Plug 'neoclide/jsonc.vim'
+  Plug 'prettier/vim-prettier',               { 'for': ['javascript', 'json']   }
   Plug 'autozimu/LanguageClient-neovim',      { 'for': 'reason', 'branch': 'next', 'do': 'bash install.sh' }
+  Plug 'neoclide/coc.nvim',                   {'tag': '*', 'do': { -> coc#util#install()}}
 
-  " " No need for completion when running inside Oni
-  if has("gui_running")
-  else
-    Plug 'Shougo/deoplete.nvim',          { 'do': ':UpdateRemotePlugins' }
-  endif
+  " Dormant
+  " Plug 'mattn/emmet-vim',                     { 'for': 'javascript'           }
+  " Plug 'scrooloose/nerdtree',                 { 'on':  'NERDTreeToggle'       }
+  " Plug 'w0rp/ale',                            { 'for': 'javascript'           }
 
 call plug#end()
 
 
 "------------------------------------------------------------------- "
-" Sourced Config Files:
+" Sourced Configs:
 "------------------------------------------------------------------- "
 " (should be referenced AFTER initiating the plugins above)
 source ~/.config/nvim/modules/prettier.vim
+source ~/.config/nvim/modules/coc.vim
 
 
 "------------------------------------------------------------------- "
-" Plugins Config:
+" Ale:
 "------------------------------------------------------------------- "
-
-" --- Ale ---
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
@@ -78,30 +67,15 @@ let g:ale_linters = {
       \}
 
 
-" --- Commentary ---
+"------------------------------------------------------------------- "
+" Commentary:
+"------------------------------------------------------------------- "
 nnoremap zz :Commentary<CR>
 
-" --- Completion ---
 
-" enable ncm2 for all buffers
-autocmd BufEnter * call ncm2#enable_for_buffer()
-
-
-
-
-" --- Deoplete ---
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#file#enable_buffer_path = 1
-let g:deoplete#auto_complete_start_length = 2
-let g:deoplete#enable_smart_case = 1
-" let g:deoplete#disable_auto_complete = 1
-" let g:deoplete#complete_method = 'omnifunc'
-" (Keeps the preview window always closed)
-" autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
-" set completeopt-=preview
-
-
-" --- Emmet ---
+"------------------------------------------------------------------- "
+" Emmet:
+"------------------------------------------------------------------- "
 let g:user_emmet_settings = {
       \  'javascript' : {
       \      'extends' : 'jsx',
@@ -109,34 +83,24 @@ let g:user_emmet_settings = {
       \}
 
 
-" --- Netrw ---
+"------------------------------------------------------------------- "
+" Netrw:
+"------------------------------------------------------------------- "
 let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
 let g:netrw_banner = 0
 let g:netrw_winsize = 20
 
 
-" --- Language Server ---
-let g:LanguageClient_serverCommands = {
-    \ 'reason': ['reason-language-server.exe'],
-    \ 'ocaml': ['reason-language-server.exe'],
-    \ 'javascript': ['typescript-language-server', '--stdio'],
-    \ }
-nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-nnoremap <silent> <F3> :call LanguageClient#textDocument_definition()<CR>
-nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
-nnoremap <silent> <F1> :call LanguageClient_contextMenu()<CR>
-autocmd FileType reason map <buffer> <D-M> :ReasonPrettyPrint<Cr>
-set formatexpr=LanguageClient#textDocument_rangeFormatting_sync()
-let g:LanguageClient_hoverPreview = 'Always'
-" let g:LanguageClient_changeThrottle = 1
-
-
-" --- FZF ---
+"------------------------------------------------------------------- "
+" FZF:
+"------------------------------------------------------------------- "
 imap <c-x><c-x> <plug>(fzf-complete-file-ag)
 au FileType fzf tnoremap <buffer> <Esc> <Esc>
 
 
-" --- Surround ---
+"------------------------------------------------------------------- "
+" Surround:
+"------------------------------------------------------------------- "
 vmap ( S(
 vmap ) S)
 vmap [ S[
@@ -144,16 +108,9 @@ vmap ] S]
 vmap ' S'
 vmap ` S`
 
-
-" --- Which Key ---
-nnoremap <silent> <leader>m :WhichKey '<leader>'<CR>
-
-
-" --- GH Dashboard ---
-" let g:github_dashboard = { 'username': 'hew', 'password': $GHTOKEN }
-
-
-" --- NERDTree ---
+"------------------------------------------------------------------- "
+" NerdTRee:
+"------------------------------------------------------------------- "
 " let g:NERDCompactSexyComs = 1
 " let g:NERDSpaceDelims = 1
 " let g:NERDDefaultAlign = 'left'
