@@ -169,6 +169,10 @@ path-exists@^3.0.0:
   resolved "https://registry.yarnpkg.com/path-exists/-/path-exists-3.0.0.tgz#ce0ebeaa5f78cb18925ea7d810d7b59b010fd515"
   integrity sha1-zg6+ql94yxiSXqfYENe1mwEP1RU=
 
+"reason-snippets@https://github.com/hew/reason-snippets.git#master":
+  version "0.0.1"
+  resolved "https://github.com/hew/reason-snippets.git#f23250f193faab131a3988b033d8d4b4397d4d1c"
+
 request-light@^0.2.4:
   version "0.2.4"
   resolved "https://registry.yarnpkg.com/request-light/-/request-light-0.2.4.tgz#3cea29c126682e6bcadf7915353322eeba01a755"

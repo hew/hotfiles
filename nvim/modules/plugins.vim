@@ -28,6 +28,7 @@ call plug#begin('~/.config/nvim/plugged')
 
   " Language & Syntax
   Plug 'isRuslan/vim-es6'
+  Plug 'jparise/vim-graphql'
   Plug 'reasonml-editor/vim-reason-plus',     { 'for': 'reason'               }
   Plug 'neoclide/jsonc.vim'
   Plug 'prettier/vim-prettier',               { 'for': ['javascript', 'json']   }

@@ -2564,11 +2564,11 @@
 		<integer>1</integer>
 	</dict>
 	<key>NSWindow Frame NSFontPanel</key>
-	<string>1396 142 445 305 0 0 1920 1177 </string>
+	<string>469 315 845 364 0 0 1920 1177 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>335 650 814 486 0 0 1920 1177 </string>
+	<string>-1585 510 918 536 -1920 63 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>6 15 1875 1162 0 0 1920 1177 </string>
+	<string>-1920 71 1881 1049 -1920 63 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>221 509 570 452 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
@@ -2807,7 +2807,7 @@
 			<key>Custom Command</key>
 			<string>No</string>
 			<key>Custom Directory</key>
-			<string>No</string>
+			<string>Recycle</string>
 			<key>Default Bookmark</key>
 			<string>No</string>
 			<key>Description</key>
@@ -3276,7 +3276,7 @@
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>DankMono-Regular 17</string>
+			<string>mononoki-Regular 17</string>
 			<key>Option Key Sends</key>
 			<integer>2</integer>
 			<key>Prompt Before Closing 2</key>
@@ -4007,6 +4007,12 @@
 	<true/>
 	<key>NoSyncInstallationId</key>
 	<string>7EBFE76C-E916-488F-9DCB-7F23D8379F8B</string>
+	<key>NoSyncNeverAskAboutSettingAlternateMouseScroll</key>
+	<true/>
+	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
+	<true/>
+	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
+	<integer>0</integer>
 	<key>NoSyncPermissionToShowTip</key>
 	<false/>
 	<key>NoSyncRecordedVariableNames</key>
@@ -4137,13 +4143,15 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2018-12-04T22:45:34Z</date>
+	<date>2019-01-03T01:14:46Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>ShowMetalFPSmeter</key>
 	<true/>
 	<key>WordCharacters</key>
 	<string>/-+\~_.</string>
+	<key>findMode_iTerm</key>
+	<integer>0</integer>
 	<key>iTerm Version</key>
 	<string>3.2.20180903-nightly</string>
 </dict>

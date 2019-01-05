@@ -4,6 +4,7 @@
 set nocompatible
 filetype indent plugin on
 
+" set mouse=c
 set encoding=utf8
 set number
 set wrap
@@ -109,13 +110,11 @@ nnoremap <leader>d :ALEFix<CR>
 nnoremap <leader>s :Ack 
 nnoremap <leader>x :Ex<CR>
 
-nnoremap <leader>y "*y
+vnoremap <leader>y "*y
 nnoremap <leader><leader>p :set paste<CR>:put  *<CR>:set nopaste<CR>
 nnoremap <leader>ec e $CONFIG./nvim/modules/preferences.vim<CR>
 nnoremap <leader>cd cd %:p:h
 nnoremap <leader><BS> :only<CR>
-
-
 
 "------------------------------------------------------------------- "
 " Movement:
