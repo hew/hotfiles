@@ -1,3 +1,5 @@
 source ~/.config/nvim/modules/plugins.vim
 source ~/.config/nvim/modules/general.vim
-source ~/.config/nvim/modules/gui.vim
+source ~/.config/nvim/modules/custom.vim
+source ~/.config/nvim/modules/prettier.vim
+source ~/.config/nvim/modules/coc.vim

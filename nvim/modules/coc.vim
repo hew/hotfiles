@@ -3,28 +3,29 @@
 "------------------------------------------------------------------- "
 
 " Use <c-space> for trigger completion.
-inoremap <silent><expr> <c-space> coc#refresh()
+" inoremap <silent><expr> <c-space> coc#refresh()
 
 " Use `[c` and `]c` for navigate diagnostics
 nmap <silent> [c <Plug>(coc-diagnostic-prev)
 nmap <silent> ]c <Plug>(coc-diagnostic-next)
 
 " Remap keys for gotos
-nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gq <Plug>(coc-declaration)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
-
-" Use `:Format` for format current buffer
-command! -nargs=0 Format :call CocAction('format')
+" Takes you to the file with the type
+nmap <silent> gd <Plug>(coc-definition)
+" documentation in preview window
+nmap <silent> gt :call <SID>show_documentation()<CR>
 
 " Remap for rename current word
 nmap <leader>rn <Plug>(coc-rename)
 
-" Remap for format
-nmap <leader>v :call CocAction('format')
+" Remap for initiate code action
+nmap <silent> ga <Plug>(coc-codeaction)
 
-" Use K for show documentation in preview window
+" Use K for show 
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 " Use <cr> for confirm completion
@@ -34,18 +35,9 @@ inoremap <expr> <TAB> pumvisible() ? "\<C-y>" : "\<TAB>"
 let g:coc_snippet_next = '<TAB>'
 let g:coc_snippet_prev = '<S-TAB>'
 
-" Use <c-space> for trigger completion.
-inoremap <silent><expr> <c-space> coc#refresh()
-
-" Use <cr> for confirm completion, 
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-
-" Use `[c` and `]c` for navigate diagnostics
-nmap <silent> [c <Plug>(coc-diagnostic-prev)
-nmap <silent> ]c <Plug>(coc-diagnostic-next)
 
 "------------------------------------------------------------------- "
-" Coc: Functions and Stuff
+" Coc: Functions
 "------------------------------------------------------------------- "
 
 " Use tab for trigger completion with characters ahead and navigate.
@@ -67,16 +59,4 @@ function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
-
-" Add diagnostic info for https://github.com/itchyny/lightline.vim
-let g:lightline = {
-      \ 'colorscheme': 'wombat',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'cocstatus', 'readonly', 'filename', 'modified' ] ]
-      \ },
-      \ 'component_function': {
-      \   'cocstatus': 'coc#status'
-      \ },
-      \ }
 

@@ -1,16 +1,28 @@
 {
-  "coc.preferences.noselect": false,
-  "coc.preferences.preferCompleteThanJumpPlaceholder": true,
+   "coc.preferences.rootPatterns": [
+     ".vim",
+     ".git",
+     ".hg",
+     ".projections.json"
+   ],
    "languageserver": {
     "reason": {
-      "command": "reason-language-server.exe",
+      "command": "reason-language-server",
       "args": [],
       "filetypes": ["reason", "ocaml"],
-      "cwd": "./src",
       "initializationOptions": {
       },
       "settings": {
       }
     }
+  },
+  "typescript.showUnused": false,
+  "diagnostic.virtualText": true,
+  "tsserver.log": "verbose",
+  "eslint.enable": false,
+  "eslint.run": "onType",
+  "eslint.autoFixOnSave": true,
+  "eslint.options": {
+    "configFile": ".eslintrc.js"
   }
 }

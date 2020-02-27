@@ -53,3 +53,21 @@ au BufWritePost init.vim source %
 
 " Auto enter insert mode when going into terminal
 au BufEnter * if &buftype == 'terminal' | :startinsert | endif
+
+" VV config - currently don't use VV
+if exists('g:vv')
+  " VVset nobold
+  " VVset noitalic
+  VVset fontfamily="mononoki"
+  VVset fontsize=16
+  VVset windowheight=100%
+  VVset windowwidth=60%
+  VVset windowleft=0
+  VVset windowtop=0
+endif
+
+" Use `:Format` for format current buffer
+" command! -nargs=0 Format :call CocAction('format')
+" Remap for format
+" nmap <leader>v :call CocAction('format')
+

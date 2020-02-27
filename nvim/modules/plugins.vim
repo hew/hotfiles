@@ -11,55 +11,53 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'tpope/vim-eunuch'
 
   " Junegunn Essentials
-  Plug 'junegunn/gv.vim'
   Plug 'junegunn/fzf.vim'
   Plug 'junegunn/vim-peekaboo'
   Plug 'junegunn/vim-slash'
 
+  " Wincent Essentials
+  Plug 'wincent/scalpel'
+
   " Themes
   Plug 'mhartington/oceanic-next'
+  Plug 'jacoborus/tender.vim'
+  Plug 'jdsimcoe/abstract.vim'
   
-  " Search / Fuzzy / Files
+  " Search & UI
   Plug '/usr/local/opt/fzf'
-  Plug 'mileszs/ack.vim'
-
-  " Display
   Plug 'itchyny/lightline.vim'
 
+  " Other
+  Plug 'jiangmiao/auto-pairs'
+  Plug 'luochen1990/rainbow'
+  Plug 'iamcco/markdown-preview.nvim',        { 'do': 'cd app & yarn install'                               }
+
   " Language & Syntax
-  Plug 'isRuslan/vim-es6'
-  Plug 'jparise/vim-graphql'
-  Plug 'reasonml-editor/vim-reason-plus',     { 'for': 'reason'               }
-  Plug 'neoclide/jsonc.vim'
-  Plug 'prettier/vim-prettier',               { 'for': ['javascript', 'json']   }
-  Plug 'autozimu/LanguageClient-neovim',      { 'for': 'reason', 'branch': 'next', 'do': 'bash install.sh' }
-  Plug 'neoclide/coc.nvim',                   {'tag': '*', 'do': { -> coc#util#install()}}
+  Plug 'leafgarland/typescript-vim',          { 'for': ['javascript', 'typescript']                         }
+  Plug 'mvolkmann/vim-js-arrow-function',     { 'for': ['javascript']                                       }
+  Plug 'jph00/swift-apple',                   { 'for': ['swift']                                            }
+  Plug 'mattn/emmet-vim',                     { 'for': ['javascript', 'json']                               }
+  Plug 'isRuslan/vim-es6',                    { 'for': ['javascript', 'json']                               }
+  Plug 'heavenshell/vim-jsdoc',               { 'for': ['javascript', 'json']                               }
+  Plug 'neoclide/jsonc.vim',                  { 'for': ['javascript', 'json']                               }
+  Plug 'prettier/vim-prettier',               { 'for': ['javascript',  'typescript', 'json', 'svg', 'html'] }
+  Plug 'reasonml-editor/vim-reason-plus',     { 'for': 'reason'                                             }
+  Plug 'jparise/vim-graphql',                 { 'for': 'graphql'                                            }
+  Plug 'neoclide/coc.nvim',                   { 'do': 'yarn install --frozen-lockfile'                      }
 
 call plug#end()
 
 
 "------------------------------------------------------------------- "
-" Sourced Configs:
+" MERLIN:
 "------------------------------------------------------------------- "
-" (should be referenced AFTER initiating the plugins above)
-source ~/.config/nvim/modules/prettier.vim
-source ~/.config/nvim/modules/coc.vim
+set rtp+=/Users/hew/.opam/default/share/merlin/vim
 
 
 "------------------------------------------------------------------- "
-" Ale:
+" FZF:
 "------------------------------------------------------------------- "
-nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-nmap <silent> <C-j> <Plug>(ale_next_wrap)
-
-let g:ale_fixers = {'javascript': ['eslint']}
-let g:ale_lint_on_save = 1
-let g:ale_linters = {
-      \ 'javascript':['eslint'], 
-      \ 'ruby': ['rubocop'], 
-      \ 'ocaml': ['merlin'], 
-      \ 'reason': ['merlin'] 
-      \}
+set rtp+=/usr/local/opt/fzf
 
 
 "------------------------------------------------------------------- "
@@ -69,21 +67,19 @@ nnoremap zz :Commentary<CR>
 
 
 "------------------------------------------------------------------- "
-" Emmet:
+" PEEKABO:
 "------------------------------------------------------------------- "
-let g:user_emmet_settings = {
-      \  'javascript' : {
-      \      'extends' : 'jsx',
-      \  },
-      \}
+" let g:peekaboo_prefix = "<leader>"
 
 
 "------------------------------------------------------------------- "
 " Netrw:
 "------------------------------------------------------------------- "
-let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
 let g:netrw_banner = 0
 let g:netrw_winsize = 20
+let g:netrw_silent = 1
+let ghregex='\(^\|\s\s\)\zs\.\S\+'
+let g:netrw_list_hide=ghregex
 
 
 "------------------------------------------------------------------- "
@@ -91,6 +87,19 @@ let g:netrw_winsize = 20
 "------------------------------------------------------------------- "
 imap <c-x><c-x> <plug>(fzf-complete-file-ag)
 au FileType fzf tnoremap <buffer> <Esc> <Esc>
+
+
+"------------------------------------------------------------------- "
+" Rg:
+"------------------------------------------------------------------- "
+command! -bang -nargs=* Rg
+      \ call fzf#vim#grep(
+      \   'rg --column --line-number --no-heading --color=always --ignore-case '.shellescape(<q-args>), 1,
+      \   <bang>0 ? fzf#vim#with_preview('up:60%')
+      \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+      \   <bang>0)
+
+nnoremap <C-p>a :Rg 
 
 
 "------------------------------------------------------------------- "
@@ -102,3 +111,26 @@ vmap [ S[
 vmap ] S]
 vmap ' S'
 vmap ` S`
+
+"------------------------------------------------------------------- "
+" Rainbow Brackets:
+"------------------------------------------------------------------- "
+let g:rainbow_active = 1
+
+
+"------------------------------------------------------------------- "
+" Lightline:
+"------------------------------------------------------------------- "
+" Add diagnostic info for https://github.com/itchyny/lightline.vim
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'cocstatus', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'cocstatus': 'coc#status',
+      \ },
+      \ }
+
+

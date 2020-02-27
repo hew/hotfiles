@@ -1,1 +1,23 @@
-{"extension":{"coc-json":{"ts":1546597079696},"coc-tsserver":{"ts":1546675552049},"coc-ultisnips":{"ts":1543997686451},"coc-word":{"ts":1543997686501},"coc-html":{"ts":1544737209411}}}
+{
+  "extension": {
+    "coc-json": {
+      "ts": 1549875335632
+    },
+    "coc-tsserver": {
+      "ts": 1549952727183
+    },
+    "coc-ultisnips": {
+      "ts": 1543997686451
+    },
+    "coc-word": {
+      "ts": 1543997686501
+    },
+    "coc-html": {
+      "ts": 1549947712270
+    },
+    "coc-css": {
+      "ts": 1549947720246
+    }
+  },
+  "lastUpdate": 1555660401515
+}

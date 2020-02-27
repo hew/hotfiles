@@ -1,18 +1,31 @@
 # ----- Editor ----- 
-alias e 'nvim'
+alias oni2 '/Applications/Onivim2.app/Contents/MacOS/Oni2'
+alias e 'nvim -i NONE'
 
 # ----- XDG_home ----- 
 alias ea 'e ~/.config/fish/aliases.fish'
 alias ef 'e ~/.config/fish/config.fish'
 alias eg 'e ~/.config/git/config'
-alias ev 'e ~/.config/nvim/modules/general.vim'
 alias ek 'e ~/.config/kitty/kitty.conf'
+alias ev 'e ~/.config/nvim/modules/general.vim'
 alias evp 'e ~/.config/nvim/modules/plugins.vim'
 alias tc 'e ~/.config/tmux/tmux.conf'
 alias fig 'e ~/.config'
 alias of 'open ~/.config'
 alias ts 'sh ~/.config/tmux/tmux-start'
 alias tp 'sh ~/.config/tmux/tmux-new'
+alias code_ 'cd ~/Code/'
+
+
+# ----- Qup Monorepo ----- 
+alias mo 'cd ~/Code/Javascript/qup-monorepo'
+alias pack 'cd ~/Code/Javascript/qup-monorepo/packages/'
+alias qup 'cd ~/Code/Javascript/qup-monorepo/packages/qup'
+alias fro 'cd ~/Code/Javascript/qup-monorepo/packages/qup/frontend'
+alias gameInit  'cd ~/Code/Javascript/qup-monorepo/packages/qup/amplify/backend/function/gameInit/src/'
+alias gameClock 'cd ~/Code/Javascript/qup-monorepo/packages/qup/amplify/backend/function/gameClock/src/'
+alias gameMarsh 'cd ~/Code/Javascript/qup-monorepo/packages/qup/amplify/backend/function/gameMarshaller/src/'
+
 
 # ----- Other Config ----- 
 alias eh 'e ~/.hyper.js'
@@ -21,7 +34,6 @@ alias ec 'e $HOME/Library/Application\ Support/Code/User/settings.json'
 # ----- Program Shortcuts ----- 
 alias slack '~/go/bin/slack-term'
 alias gat 'gatsby' 
-alias t '/Users/hew/go/bin/td'
 
 # ----- Sites Shortcuts ----- 
 alias work-server 'cd ~/Documents/Work/sul-server'
@@ -33,6 +45,7 @@ alias ll='ls -1d'
 alias md 'mkdir -p'
 alias cx 'chmod +x'
 alias 'c-x' 'chmod -x'
+alias rm 'trash'
 
 ## ----- Git ----- 
 alias gs='git status'
@@ -56,8 +69,9 @@ alias copy-path='pwd ^| pbcopy'
 
 # Pretty Cat
 alias ccat='pygmentize -g'
-alias cat=bat
-
+# alias cat=bat
+alias grep='rg'
+# alias ef="nvim (rg --files | fzf)"
 
 ## ----- Navigation -----
 
@@ -67,6 +81,7 @@ alias sites 'cd ~/Sites'
 alias fig 'cd ~/.config/'
 alias desk 'cd ~/Desktop'
 alias dev 'cd ~/Dev'
+alias qu 'cd ~/Code/QUP'
 
 # Shorthands
 alias cd.. 'cd ..'
