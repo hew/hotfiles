@@ -17,7 +17,7 @@
     }
   },
   "typescript.showUnused": false,
-  "diagnostic.virtualText": true,
+  "diagnostic.virtualText": false,
   "tsserver.log": "verbose",
   "eslint.enable": false,
   "eslint.run": "onType",

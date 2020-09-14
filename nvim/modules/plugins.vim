@@ -26,6 +26,7 @@ call plug#begin('~/.config/nvim/plugged')
   " Search & UI
   Plug '/usr/local/opt/fzf'
   Plug 'itchyny/lightline.vim'
+  Plug 'justinmk/vim-dirvish'
 
   " Other
   Plug 'jiangmiao/auto-pairs'
@@ -33,7 +34,6 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'iamcco/markdown-preview.nvim',        { 'do': 'cd app & yarn install'                               }
 
   " Language & Syntax
-  Plug 'leafgarland/typescript-vim',          { 'for': ['javascript', 'typescript']                         }
   Plug 'mvolkmann/vim-js-arrow-function',     { 'for': ['javascript']                                       }
   Plug 'jph00/swift-apple',                   { 'for': ['swift']                                            }
   Plug 'mattn/emmet-vim',                     { 'for': ['javascript', 'json']                               }
@@ -81,6 +81,10 @@ let g:netrw_silent = 1
 let ghregex='\(^\|\s\s\)\zs\.\S\+'
 let g:netrw_list_hide=ghregex
 
+"------------------------------------------------------------------- "
+" NerdTree:
+"------------------------------------------------------------------- "
+map <C-n> :NERDTreeToggle<CR>
 
 "------------------------------------------------------------------- "
 " FZF:
@@ -134,3 +138,5 @@ let g:lightline = {
       \ }
 
 
+" Use auocmd to force lightline update.
+autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
