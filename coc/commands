@@ -1,7 +1,8 @@
+editor.action.organizeImport
+tsserver.restart
 eslint.executeAutofix
 eslint.executeAutoFix
 workspace.showOutput
 tsserver.reloadProjects
-tsserver.restart
 tsserver.openTsServerLog
 tsserver.goToProjectConfig

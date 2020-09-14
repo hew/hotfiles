@@ -1,3 +1,8 @@
 {
-  "lastUpdate": 1582823673481
+  "lastUpdate": 1593202428574,
+  "extension": {
+    "coc-tsserver": {
+      "locked": true
+    }
+  }
 }

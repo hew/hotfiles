@@ -1,6 +1,10 @@
+__useEffect
+__useState
 __comp
-__flexCenter
+settimeout
 __log
+switch
+__flexCenter
 __func
 __imp
 __blockComment
