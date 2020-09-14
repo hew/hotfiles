@@ -55,11 +55,13 @@ call plug#end()
 "------------------------------------------------------------------- "
 
 lua << EOF
-  local lsp        = require'nvim_lsp'
-  local completion = require'completion'
-
-  lsp.tsserver.setup {
-    on_attach = completion.on_attach
+    require'nvim_lsp'.tsserver.setup{
+    -- cmd = {
+    --   "typescript-language-server",
+    --   "--stdio",
+    --   "--tsserver-log-file",
+    --   "tslog"
+    -- }
   }
 EOF
 
