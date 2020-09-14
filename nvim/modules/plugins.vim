@@ -55,7 +55,8 @@ call plug#end()
 "------------------------------------------------------------------- "
 
 lua << EOF
-    require'nvim_lsp'.tsserver.setup{
+
+  require'nvim_lsp'.tsserver.setup{
     -- cmd = {
     --   "typescript-language-server",
     --   "--stdio",
@@ -63,6 +64,9 @@ lua << EOF
     --   "tslog"
     -- }
   }
+
+  require'nvim_lsp'.rome.setup{}
+
 EOF
 
 "------------------------------------------------------------------- "
