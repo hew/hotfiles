@@ -34,19 +34,34 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'iamcco/markdown-preview.nvim',        { 'do': 'cd app & yarn install'                               }
 
   " Language & Syntax
-  Plug 'mvolkmann/vim-js-arrow-function',     { 'for': ['javascript']                                       }
+  Plug 'neovim/nvim-lspconfig'
+  Plug 'nvim-lua/completion-nvim'
+  " Plug 'mvolkmann/vim-js-arrow-function',     { 'for': ['javascript']                                       }
   Plug 'jph00/swift-apple',                   { 'for': ['swift']                                            }
   Plug 'mattn/emmet-vim',                     { 'for': ['javascript', 'json']                               }
   Plug 'isRuslan/vim-es6',                    { 'for': ['javascript', 'json']                               }
   Plug 'heavenshell/vim-jsdoc',               { 'for': ['javascript', 'json']                               }
-  Plug 'neoclide/jsonc.vim',                  { 'for': ['javascript', 'json']                               }
+  " Plug 'neoclide/jsonc.vim',                  { 'for': ['javascript', 'json']                               }
   Plug 'prettier/vim-prettier',               { 'for': ['javascript',  'typescript', 'json', 'svg', 'html'] }
   Plug 'reasonml-editor/vim-reason-plus',     { 'for': 'reason'                                             }
-  Plug 'jparise/vim-graphql',                 { 'for': 'graphql'                                            }
-  Plug 'neoclide/coc.nvim',                   { 'do': 'yarn install --frozen-lockfile'                      }
+  " Plug 'jparise/vim-graphql',                 { 'for': 'graphql'                                            }
+  " Plug 'neoclide/coc.nvim',                   { 'do': 'yarn install --frozen-lockfile'                      }
 
 call plug#end()
 
+
+"------------------------------------------------------------------- "
+" LSP:
+"------------------------------------------------------------------- "
+
+lua << EOF
+  local lsp        = require'nvim_lsp'
+  local completion = require'completion'
+
+  lsp.tsserver.setup {
+    on_attach = completion.on_attach
+  }
+EOF
 
 "------------------------------------------------------------------- "
 " MERLIN:
