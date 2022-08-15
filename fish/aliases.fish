@@ -1,5 +1,5 @@
 # ----- Editor -----
-alias e 'nvim -i NONE'
+alias e 'nvim'
 alias code "open -a 'Visual Studio Code' ."
 
 # ----- XDG_home -----
@@ -18,11 +18,14 @@ alias ec 'e $HOME/Library/Application\ Support/Code/User/settings.json'
 
 ## ----- General Unix -----
 alias l='ls -ld .?*'
+alias ls='exa'
+alias find='fd'
 alias ll='ls -1d'
 alias md 'mkdir -p'
 alias cx 'chmod +x'
 alias 'c-x' 'chmod -x'
 alias rm 'trash'
+alias dev-chrome 'open -n -a /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --args --user-data-dir="/tmp/chrome_dev_test" --disable-web-security'
 
 ## ----- Git -----
 alias gs='git status'
@@ -38,7 +41,7 @@ alias get-dev='git co dev ; git pull ; git co -'
 # Quick Jumps
 alias sites 'cd ~/Sites'
 alias desk 'cd ~/Desktop'
-alias work 'cd ~/Code/Javascript/live-show-dashboard'
+alias work 'cd ~/Desktop/Code'
 
 # Shorthands
 alias .. 'cd ..'
@@ -53,6 +56,7 @@ alias py-serve='python -m SimpleHTTPServer'
 alias mark 'sh ~/.config/fish/functions/b.rb'
 alias ag='ag --path-to-ignore ~/.ignore'
 alias nomore='find ./ -iname ".DS_Store" -delete'
-alias ccat='pygmentize -g'
 alias gh-key "echo $GHTOKEN | pbcopy"
+alias gl-key "echo $GITLAB_KEY | pbcopy"
+alias cat='pygmentize -g'
 

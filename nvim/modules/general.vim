@@ -11,8 +11,9 @@ set list
 set lazyredraw
 set incsearch
 set wildmode=full
-" set laststatus=2                            " Displays airline when it won't display
-" set wildoptions+=pum                        " not released on version 0.3.8
+set wildoptions+=pum                        
+set completeopt=menuone,noselect
+" set laststatus=2                          " Displays airline when it won't display
 set backspace=indent,eol,start              " allow backspacing over everything in insert mode
 set autoindent                              " always set autoindenting on
 set copyindent                              " copy the previous indentation on autoindenting
@@ -42,9 +43,11 @@ set display+=lastline                       " show long last line in window
 set timeoutlen=500                          " eliminate any lag ESC lag
 set shell=/usr/local/bin/fish               " Use the fish shell
 set ttimeoutlen=0
-set completeopt-=preview
-set listchars=tab:▸–,trail:·,extends:❯,precedes:❮,nbsp:⌴
+" set listchars=tab:▸–,trail:·,extends:❯,precedes:❮,nbsp:⌴
+set nolist
+set nospell
 set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
+set shell=/bin/bash
 
 
 " EXECUTABLES:-------------------------------------------------------- " 
@@ -66,23 +69,15 @@ command! WindowIncrease :vertical resize +10<CR>
 
 
 " LEADER: ------------------------------------------------------------ " 
-nnoremap <leader>b :Buffers<CR>
-nnoremap <leader>p :GFiles<CR>
-nnoremap <leader>g :GFiles?<CR>
-nnoremap <leader>f :Files<CR>
-nnoremap <Leader>z :PrettierAsync<CR>
-nnoremap <leader>x :Dirvish<CR><CR>
 vnoremap <leader>c "*y
 nnoremap <leader>q :e ~/.config/nvim/modules/custom.vim<CR>
+nnoremap <Leader>z :PrettierAsync<CR>
 nnoremap <leader><BS> :only<CR>
-nnoremap <leader>m :MarkdownPreview<CR>
 
 inoremap <leader>v <C-O>za
 nnoremap <leader>v za
 onoremap <leader>v <C-C>za
 vnoremap <leader>v zf
-
-" nnoremap <Leader>d :CocCommand eslint.executeAutofix<CR>
 
 
 " MOVEMENT: ---------------------------------------------------------- "
@@ -115,7 +110,8 @@ nnoremap <C-S>1 :so $MYVIMRC
 
 " THEME: --------------------------------------------------------------- "
 syntax on
-colorscheme OceanicNext
+colorscheme srcery
+let g:srcery_italic = 1
 
 " FONT: --------------------------------------------------------------- "
 if (has("termguicolors"))

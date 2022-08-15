@@ -4,7 +4,7 @@
   smudge = git media smudge %f
 [user]
   name = Matthew Jones
-  email = matt@hew.tools
+	email = mathujones@gmail.com
 [filter "hawser"]
   clean = git hawser clean %f
   smudge = git hawser smudge %f
@@ -70,3 +70,5 @@
   prompt = false
 [mergetool]
   path = vi
+[init]
+	defaultBranch = main
