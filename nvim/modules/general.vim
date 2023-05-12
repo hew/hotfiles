@@ -1,7 +1,3 @@
-" General: ------------------------------------------------------------------- 
-
-set nocompatible
-filetype indent plugin on
 set mouse=a
 set encoding=utf8
 set number
@@ -13,11 +9,9 @@ set incsearch
 set wildmode=full
 set wildoptions+=pum                        
 set completeopt=menuone,noselect
-" set laststatus=2                          " Displays airline when it won't display
 set backspace=indent,eol,start              " allow backspacing over everything in insert mode
 set autoindent                              " always set autoindenting on
 set copyindent                              " copy the previous indentation on autoindenting
-set number                                  " always show line numbe
 set cmdheight=1                             " Buttom space where messages are displayed
 set tabstop=2                               " a tab is two spaces
 set shiftwidth=2                            " number of spaces to use for autoindenting
@@ -25,34 +19,23 @@ set expandtab                               " expand <Tab>s with spaces
 set showmatch                               " set show matching parenthesis
 set smartcase                               " ignore case if search pattern is all lowercase,
 set wildignore=*.swp,*.bak                  " ignore files
-set visualbell                              " don't beep
-set noerrorbells                            " don't beep
 set nobackup                                " don't backup 
 set nowritebackup                           " don't backup 
 set noswapfile                              " don't save with swap files
 set splitright                              " Split preferences
-set showcmd                                 " Show which keys are pressed in normal mode
 set foldmethod=manual                       " Manual folds
 set foldcolumn=1                            " visual indicator for folds
 set signcolumn=yes                          " always show signcolumns
-set noshowmode                              " removes '--insert--' because that is shown in Lightline"
 set matchtime=2                             " Jump to matching parents for 30ms
 set wrapscan                                " Searches wrap around end of file
 set autoread                                " reload unedited files that changed
 set display+=lastline                       " show long last line in window
 set timeoutlen=500                          " eliminate any lag ESC lag
-set shell=/usr/local/bin/fish               " Use the fish shell
-set ttimeoutlen=0
-" set listchars=tab:▸–,trail:·,extends:❯,precedes:❮,nbsp:⌴
+set shell=/bin/bash                         " Use the bash shell
 set nolist
 set nospell
 set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
-set shell=/bin/bash
-
-
-" EXECUTABLES:-------------------------------------------------------- " 
-let g:python3_host_prog = '/Users/hew/.pyenv/shims/python'
-let g:racer_cmd = "/Users/hew/.cargo/bin/racer"
+" set shell=/usr/local/bin/fish
 
 
 " PREFERENCES: ------------------------------------------------------- "
@@ -110,7 +93,7 @@ nnoremap <C-S>1 :so $MYVIMRC
 
 " THEME: --------------------------------------------------------------- "
 syntax on
-colorscheme srcery
+colorscheme OneHalf
 let g:srcery_italic = 1
 
 " FONT: --------------------------------------------------------------- "
@@ -156,3 +139,15 @@ if has("persistent_undo")
   set undofile
 endif
 
+" press <Tab> to expand or jump in a snippet. These can also be mapped separately
+" via <Plug>luasnip-expand-snippet and <Plug>luasnip-jump-next.
+imap <silent><expr> <Tab> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>' 
+" -1 for jumping backwards.
+inoremap <silent> <S-Tab> <cmd>lua require'luasnip'.jump(-1)<Cr>
+
+snoremap <silent> <Tab> <cmd>lua require('luasnip').jump(1)<Cr>
+snoremap <silent> <S-Tab> <cmd>lua require('luasnip').jump(-1)<Cr>
+
+" For changing choices in choiceNodes (not strictly necessary for a basic setup).
+imap <silent><expr> <C-E> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-E>'
+smap <silent><expr> <C-E> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-E>'

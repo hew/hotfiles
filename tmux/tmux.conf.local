@@ -1,6 +1,3 @@
-
-# -- other stuff -------------------------------------------------------------------
-
 # Set Custom Prefix
 set-option -g prefix C-p
 
@@ -15,10 +12,11 @@ bind C-p send-prefix
 # bind -T copy-mode-vi y send-keys -X copy-pipe-and-cancel 'pbcopy'
 
 # Ergonomic Shuffle
-bind-key -n C-s next-window
+bind-key -n C-e next-window
 bind-key -n F12 next-window
 bind-key -n F11 previous-window
-bind-key -n C-t swap-pane
+bind-key -n C-s previous-window
+# bind-key -n C-t swap-pane
 
 bind-key -n F9 resize-pane -L 5
 bind-key -n F10 resize-pane -R 5
@@ -38,12 +36,10 @@ bind c new-window -c "#{pane_current_path}"
 bind . command-prompt
 bind l last-window
 bind space command-prompt -p index "select-window"
-bind r source-file ~/.tmux.conf.local
-bind R source-file ~/.tmux.conf
+bind R source-file ~/.config/tmux/tmux.conf
 
 # Use Vim!
 setw -g mode-keys vi
-
 
 # No Lag on Inputs
 set -s escape-time 22

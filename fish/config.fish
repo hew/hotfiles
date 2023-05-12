@@ -1,29 +1,26 @@
 # Load Aliases and Shiz
 source ~/.config/fish/aliases.fish
-# source $HOME/.cargo/env
-
-# set DENO_INSTALL "/Users/tahini/.local"
 
 set PATH ~/.config/bin/ $PATH
 set PATH ~/.local/bin/ $PATH
-set PATH ~/go/bin/ $PATH
-set PATH ~/.local/share/solana/install/active_release/bin $PATH
 set PATH ~/.cargo/bin $PATH
-# set PATH "$DENO_INSTALL/bin:$PATH"
-# set PATH ~/.cargo/bin/ $PATH
-set PATH /nix/var/nix/profiles/default/bin $PATH
+set PATH /opt/homebrew/opt/openjdk/bin $PATH
+set PATH "$VOLTA_HOME/bin" $PATH
 
-# Pyenv
-status is-interactive; and pyenv init --path | source
-pyenv init - | source
+set -gx PUPPETEER_SKIP_CHROMIUM_DOWNLOAD true
+set -gx PUPPETEER_EXECUTABLE_PATH `which chromium`
+set -gx VOLTA_HOME "$HOME/.volta"
+set -gx OBJC_DISABLE_INITIALIZE_FORK_SAFETY YES 
+set -gx ES_JAVA_HOME "/opt/homebrew/Cellar/openjdk/20.0.1/libexec/openjdk.jdk/Contents/Home"
 
-# Rbenv
-# status --is-interactive ; and source (rbenv init - | psub)
+eval "$(/opt/homebrew/bin/brew shellenv)"
 
-# opam configuration
-source /Users/hew/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
-
-# This causes fzf to error out when searching for git checked-in files (?)
-# ssh-add -K ~/.ssh/id_rsa
-
-export PATH="$PATH:/Users/tahini/.foundry/bin"
+# Helper for finding files
+function rgvim
+    set file_line (rg --color=always --line-number --no-heading $argv | fzf --ansi)
+    if test -n "$file_line"
+        set file (echo "$file_line" | cut -d ':' -f 1)
+        set line (echo "$file_line" | cut -d ':' -f 2)
+        nvim +$line $file
+    end
+end

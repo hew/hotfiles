@@ -61,7 +61,7 @@
   editor = vim
   excludesfile = ~/.config/git/ignore
   configfile = ~/.config/git/config
-  pager = diff-so-fancy | less --tabs=4 -RFX
+	pager = diff-so-fancy | less --tabs=4 -RFX
 [credential]
   helper = osxkeychain
 [ghi]
@@ -72,3 +72,11 @@
   path = vi
 [init]
 	defaultBranch = main
+[credential "https://github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
+[merge]
+	tool = vimdiff

@@ -1,0 +1,45 @@
+#!/bin/sh
+
+EMBERSERVERS="Ember"
+EMBERSERVERSEXIST=$(tmux list-sessions | grep $EMBERSERVERS)
+
+SESSION="Code"
+SESSIONEXISTS=$(tmux list-sessions | grep $SESSION)
+
+if [ "$EMBERSERVERSEXIST" = "" ] && [ "$SESSIONEXISTS" = "" ]
+then
+    # Start New Session with our name
+    tmux new-session -d -s $SESSION
+  
+    tmux rename-window 'AF'
+    tmux send-keys -t ':AF' 'arc' Enter
+    tmux send-keys -t ':AF' 'e .' Enter
+
+    tmux new-window -n 'Servers'
+    # Set up layout
+    tmux split-window -v
+    tmux select-pane -t 1
+    tmux split-window -h
+    tmux select-pane -t 3
+    tmux split-window -h
+    # Run servers
+    tmux select-pane -t 1
+    tmux send-keys -t 1 'arc' Enter 
+    tmux send-keys -t 1 'es' Enter
+    tmux select-pane -t 2
+    tmux send-keys -t 2 'swft' Enter
+    tmux send-keys -t 2 'es' Enter
+    tmux select-pane -t 3
+    tmux send-keys -t 3 'star' Enter
+    tmux send-keys -t 3 'es' Enter
+
+    # Leave the last pane empty (or navigate to home directory)
+    tmux select-window 1
+    tmux send-keys -t 3 'arc' Enter
+
+fi
+
+# Attach Session, on the Main window
+tmux attach-session -t $SESSION
+tmux source-file ~/.config/tmux/tmux.conf
+
